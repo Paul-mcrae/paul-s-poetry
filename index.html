@@ -1,98 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paul Kaganda - Kyotera Poet</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paul</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0a0a;color:#fff;font-family:system-ui,sans-serif;padding:16px}
 .card{max-width:540px;margin:0 auto;border:2.5px solid #FFC400;border-radius:26px;padding:26px;background:#151515;text-align:center}
 .avatar{width:135px;height:135px;border-radius:50%;border:3.5px solid #FFC400;object-fit:cover;margin:0 auto;display:block}
-h1{color:#FFC400;margin:16px 0 8px;font-size:30px}
+h1{color:#FFC400;margin:16px 0 8px;font-size:32px;letter-spacing:2px}
 .tag{background:#FFC400;color:#000;padding:7px 16px;border-radius:20px;font-weight:900;font-size:13px;display:inline-block}
-p.bio{color:#ccc;margin:16px 0 0;line-height:1.6;font-size:15px}
-.poems{max-width:540px;margin:22px auto}
-.poem-card{border:1px solid #2a2a2a;border-radius:18px;padding:20px;margin:18px 0;background:#151515;text-align:left}
-.poem-title{color:#FFC400;font-weight:800;margin-bottom:12px;font-size:17px}
+.bio{color:#ccc;margin:16px 0 0;line-height:1.6;font-size:15px}
+.poem-wrap{max-width:540px;margin:22px auto;border:1px solid #2a2a2a;border-radius:18px;padding:20px;background:#151515}
 .poem-text{white-space:pre-wrap;line-height:1.7;font-size:15px;color:#eee}
-.comment-section{margin-top:18px;border-top:1px dashed #333;padding-top:14px}
-.comment-section h4{color:#FFC400;font-size:14px;margin-bottom:10px}
-.comment-list{margin:10px 0}
-.comment{border-left:2px solid #FFC400;background:#1e1e1e;padding:8px 10px;border-radius:8px;margin:8px 0;font-size:13.5px}
-.comment b{color:#FFC400}
-.comment-form{display:flex;gap:6px;flex-direction:column}
-.comment-form input, .comment-form textarea{background:#0f0f0f;border:1px solid #333;color:#fff;border-radius:10px;padding:10px;font-size:14px;width:100%}
-.comment-form button{background:#FFC400;color:#000;border:none;border-radius:10px;padding:10px;font-weight:800;cursor:pointer}
-.giscus-wrapper{max-width:540px;margin:30px auto;border:2px solid #FFC400;border-radius:18px;padding:16px;background:#151515}
-.giscus-wrapper h3{color:#FFC400;margin-bottom:12px;text-align:center}
+.actions{display:flex;gap:18px;margin-top:16px;border-top:1px solid #222;padding-top:12px;font-size:14px}
+.act{cursor:pointer;display:flex;align-items:center;gap:6px;user-select:none}
+.act:hover{color:#FFC400}
+.act.liked{color:#FFC400}
+.comment-box{margin-top:12px;display:none}
+.comment-box input{width:100%;background:#0f0f0f;border:1px solid #333;color:#fff;border-radius:10px;padding:10px;font-size:14px}
+.comments{margin-top:10px;font-size:13px;color:#ccc}
+.comments div{background:#1e1e1e;padding:6px 10px;border-radius:8px;margin:6px 0;border-left:2px solid #FFC400}
 </style>
 </head>
 <body>
 <div class="card">
-<img class="avatar" src="paul_final.jpg?v=99" alt="Paul Kaganda">
-<h1>PAUL KAGANDA</h1>
+<img class="avatar" src="paul_final.jpg?v=99" alt="Paul">
+<h1>PAUL</h1>
 <div class="tag">KYOTERA POET • READER IN THE FIELD</div>
-<p class="bio">I am Paul Kaganda, Kyotera Uganda. I write about love in small things - coffee, shirts, keys, ugly rice. Real Ugandan love. Found reading in the fields.</p>
+<p class="bio">I am Paul, Kyotera Uganda. Real Ugandan love poems.</p>
 </div>
-<div class="poems" id="poems"></div>
 
-<!-- OPTION 2 - GLOBAL PERMANENT COMMENTS -->
-<div class="giscus-wrapper">
-<h3>💬 Global Comments (Everyone Sees)</h3>
-<p style="color:#999;font-size:13px;text-align:center;margin-bottom:12px">Login with GitHub to comment permanently</p>
-<script src="https://giscus.app/client.js"
-data-repo="Paul-mcrae/paul-s-poetry"
-data-repo-id="R_kgDOP5S_hQ"
-data-category="General"
-data-category-id="DIC_kwDOP5S_hc4Cw7a-"
-data-mapping="pathname"
-data-strict="0"
-data-reactions-enabled="1"
-data-emit-metadata="0"
-data-input-position="bottom"
-data-theme="dark"
-data-lang="en"
-crossorigin="anonymous" async>
-</script>
+<div class="poem-wrap" id="p1">
+<div class="poem-text">If I had a heart to take with a chance to be loved by you,
+I'd consider coming home, before I'm reminded of the 1,859 miles one of us would have to walk, and what could happen if we were just in a room to talk.
+
+Like me in your clothes eating breakfast, you in my bed fast asleep...
+
+You were beautiful, funny, thoughtful, your eyes weren't hungry, they pleaded to be gentle. So if I had a heart to take, you wouldn't need to convince it, for if you have already stolen something, you cannot steal it again.</div>
+
+<div class="actions">
+<div class="act" onclick="like('p1')" id="like-p1">❤️ <span id="lc-p1">0</span> Like</div>
+<div class="act" onclick="sharePoem()">🔗 Share</div>
+<div class="act" onclick="toggleComment('p1')">💬 Comment</div>
+</div>
+
+<div class="comment-box" id="box-p1">
+<input id="inp-p1" placeholder="Write a comment..." onkeydown="if(event.key==='Enter') addComment('p1')">
+<div class="comments" id="com-p1"></div>
+</div>
 </div>
 
 <script>
-const poems = [
-{ id:"heart", title:"If I had a heart to take - One Page", text: `If I had a heart to take with a chance to be loved by you,
-I'd consider coming home, before I'm reminded of the 1,859 miles one of us would have to walk, and what could happen if we were just in a room to talk.
-
-Like me in your clothes eating breakfast, you in my bed fast asleep, it's October and we're admiring mountains from the top of the street, you buy me tea, kiss my head, my hand, to remind me of my power.
-
-Once a girl so used to her independence met a boy, she feared it was a domesticated ploy to lure her from the castle, what if the prince was just another frog? Until you came, roses in hand, played our song.
-
-I sit at a bar at a party but still find your number, you answer half curious, half knowing you'll love anything I tell, you share a poem, a necklace of words made of gold, you were nervous. I made you nervous, excited, scared, but every part of you dared to come see me.
-
-It was October, warm fall wind, we got ice cream, you never let me pay. You spoke of a childhood place that's no longer home, where home is a season and romance was an invitation you thought you'd never get. You took a flight for me.
-
-They asked what I loved about you and I settled for "beautiful", but they didn't know what that meant, that if my life was a straight metal rod of planning, I'd found the strength to have it bent.
-
-Over international waters, your hand on my waist, over pyramids, mountains, frozen lakes, sunny skies, over comfortable hellos and only-see-you-later goodbyes, they asked why it ended and I said "too far", remembering your hand on my thigh as I sang in your car.
-
-You were beautiful, funny, thoughtful, your eyes weren't hungry, they pleaded to be gentle. So if I had a heart to take, you wouldn't need to convince it, for if you have already stolen something, you cannot steal it again.` }
-];
-const container = document.getElementById('poems');
-function loadComments(id){ try{ return JSON.parse(localStorage.getItem('comments_'+id)||'[]'); }catch{return[]} }
-function saveComment(id,name,text){ const list=loadComments(id); list.push({name,text,date:new Date().toLocaleString()}); localStorage.setItem('comments_'+id,JSON.stringify(list)); return list; }
-function renderPoems(){
- container.innerHTML='';
- poems.forEach(p=>{
-  const comments=loadComments(p.id);
-  const div=document.createElement('div'); div.className='poem-card';
-  div.innerHTML=`<div class="poem-title">🔥 ${p.title}</div><div class="poem-text">${p.text}</div>
-  <div class="comment-section"><h4>💛 Quick Comments (${comments.length}) - Instant</h4>
-  <div class="comment-list" id="list-${p.id}">${comments.map(c=>`<div class="comment"><b>${c.name}</b> <span style="color:#777;font-size:11px">${c.date}</span><br>${c.text}</div>`).join('') || '<div style="color:#666;font-size:13px">Be first to comment!</div>'}</div>
-  <div class="comment-form"><input id="name-${p.id}" placeholder="Your name"><textarea id="text-${p.id}" rows="2" placeholder="Write a comment..."></textarea><button onclick="postComment('${p.id}')">Post Quick Comment</button></div></div>`;
-  container.appendChild(div);
- });
-}
-function postComment(id){ const name=document.getElementById('name-'+id).value.trim()||'Anonymous'; const text=document.getElementById('text-'+id).value.trim(); if(!text) return alert('Write something!'); saveComment(id,name,text); renderPoems(); }
-renderPoems();
+// Photo fresh
 document.querySelector('.avatar').src='paul_final.jpg?v='+Date.now();
+
+// LIKE - saves count
+function like(id){
+  let c = parseInt(localStorage.getItem('like-'+id)||'0');
+  let liked = localStorage.getItem('liked-'+id)=='1';
+  if(liked){ c--; localStorage.setItem('liked-'+id,'0'); document.getElementById('like-'+id).classList.remove('liked'); }
+  else{ c++; localStorage.setItem('liked-'+id,'1'); document.getElementById('like-'+id).classList.add('liked'); }
+  localStorage.setItem('like-'+id,c);
+  document.getElementById('lc-'+id).innerText=c;
+}
+// Load like
+document.getElementById('lc-p1').innerText=localStorage.getItem('like-p1')||'0';
+if(localStorage.getItem('liked-p1')=='1') document.getElementById('like-p1').classList.add('liked');
+
+// SHARE
+function sharePoem(){
+  if(navigator.share){ navigator.share({title:'Paul - Poetry', url:window.location.href}); }
+  else{ navigator.clipboard.writeText(window.location.href); alert('Link copied! Share it.'); }
+}
+
+// COMMENT
+function toggleComment(id){ const b=document.getElementById('box-'+id); b.style.display=b.style.display=='block'?'none':'block'; }
+function addComment(id){
+  const inp=document.getElementById('inp-'+id);
+  const txt=inp.value.trim(); if(!txt) return;
+  const list=JSON.parse(localStorage.getItem('com-'+id)||'[]'); list.push(txt);
+  localStorage.setItem('com-'+id,JSON.stringify(list));
+  inp.value=''; renderCom(id);
+}
+function renderCom(id){
+  const list=JSON.parse(localStorage.getItem('com-'+id)||'[]');
+  document.getElementById('com-'+id).innerHTML=list.map(t=>`<div>${t}</div>`).join('');
+}
+renderCom('p1');
 </script>
 </body>
 </html>
