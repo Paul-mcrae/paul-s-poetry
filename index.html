@@ -188,5 +188,7 @@ msg.innerHTML='<p style="color:#0f0;text-align:center">✅ Changed!</p>';
 document.getElementById('oldPass').value='';document.getElementById('newPass').value='';document.getElementById('confirmPass').value='';
 }
 renderPoems();
+  // FORCE RELOAD PROFILE PHOTO
+document.getElementById('mainImg').src = 'paul.jpg?v=' + Date.now();
 if(!localStorage.getItem('views')) localStorage.setItem('views','1');
 </script></body></html>
