@@ -1,24 +1,61 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PAUL - Kyotera Poet</title>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PAUL</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#fff;font-family:system-ui;padding-bottom:60px}
-header{background:#111;padding:12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20;border-bottom:1px solid #222}header b span{color:#f5c518}
-.btn{padding:10px 16px;border-radius:25px;font-weight:800;font-size:13px;text-decoration:none;display:inline-block;cursor:pointer}.g{background:#f5c518;color:#000}.d{background:#222;color:#fff;border:1px solid #555}
-.clockBox{background:#111;border:2px solid #f5c518;border-radius:16px;padding:14px;margin:12px;display:flex;justify-content:space-between;align-items:center}.clockBox .t{font-size:30px;color:#f5c518;font-weight:900}
-.about{border:2px solid #f5c518;border-radius:22px;margin:12px;padding:20px;text-align:center;background:#121212}.about img{width:115px;height:115px;border-radius:50%;border:3px solid #f5c518;object-fit:cover;background:#222}
-.card{background:#121212;border:1px solid #222;border-radius:16px;padding:16px;margin:12px}.card h3{color:#f5c518}.card p{white-space:pre-line;line-height:1.7;color:#ddd;font-size:14px;margin-top:8px}
-.actions{display:flex;gap:8px;margin-top:14px;border-top:1px solid #222;padding-top:12px}.actions button{background:#1e1e1e;border:1px solid #333;color:#fff;padding:8px 14px;border-radius:20px;font-size:12px;cursor:pointer}.liked{background:#f5c518!important;color:#000!important}
-.cBox{display:none;margin-top:12px;border-top:1px solid #222;padding-top:12px}.cBox input{width:100%;padding:12px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:12px}.cItem{background:#1a1a1a;border-left:3px solid #f5c518;padding:8px 12px;border-radius:10px;margin-top:8px;font-size:13px}
-#shareM{position:fixed;left:0;top:0;right:0;bottom:0;background:rgba(0,0,0,.88);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px}.shareBox{background:#111;border:2px solid #f5c518;border-radius:22px;padding:22px;max-width:360px;width:100%;text-align:center}.shareBox a,.shareBox button{display:block;width:100%;margin:10px 0;padding:13px;border-radius:28px;text-decoration:none;font-weight:800;font-size:14px;border:none;cursor:pointer}.wa{background:#25D366;color:#fff}.fb{background:#1877F2;color:#fff}.x{background:#fff;color:#000}.cp{background:#222;color:#f5c518;border:1.5px solid #f5c518}
-#adminPanel{position:fixed;inset:0;background:#000;z-index:9999;display:none;overflow:auto}
-.topBar{background:#111;border-bottom:1px solid #222;padding:14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}
-.statGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}.stat{background:#111;border:1px solid #222;border-radius:14px;padding:14px}.stat b{font-size:24px;color:#f5c518;display:block}.stat span{font-size:11px;color:#888}
-.tabs{display:flex;gap:8px;padding:12px;overflow:auto}.tabs button{background:#1a1a1a;border:1px solid #333;color:#aaa;padding:10px 16px;border-radius:25px;font-size:12px;white-space:nowrap}.tabs button.on{background:#f5c518;color:#000;font-weight:800}
-.tab{padding:12px;display:none}.tab.on{display:block}
-.input{width:100%;padding:12px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:12px;margin-top:10px}
-.poemRow{background:#111;border:1px solid #222;border-radius:12px;padding:12px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.loginBox{max-width:360px;margin:80px auto;background:#111;border:2px solid #f5c518;border-radius:20px;padding:24px;text-align:center}
+body{background:#000;color:#fff;font-family:system-ui;margin:0}
+header{background:#111;padding:12px;display:flex;justify-content:space-between;border-bottom:1px solid #222}
+header b span{color:#f5c518}
+.btn{padding:10px 16px;border-radius:25px;font-weight:800;font-size:13px;text-decoration:none}
+.g{background:#f5c518;color:#000}.d{background:#222;color:#fff;border:1px solid #555}
+.box{border:2px solid #f5c518;border-radius:20px;margin:12px;padding:14px;background:#121212;text-align:center}
+.box img{width:100px;height:100px;border-radius:50%;border:3px solid #f5c518}
+.card{background:#121212;border:1px solid #222;border-radius:14px;padding:14px;margin:12px}
+.card h3{color:#f5c518}
+.card p{white-space:pre-line;color:#ddd;font-size:14px;line-height:1.6;margin-top:8px}
+.act{margin-top:10px;border-top:1px solid #222;padding-top:10px;display:flex;gap:6px}
+.act button{padding:7px 12px;border-radius:20px;background:#222;color:#fff;border:1px solid #333;font-size:12px}
+#dash{position:fixed;inset:0;background:#000;z-index:9999;display:none;padding:12px;overflow:auto}
 </style></head><body>
+<header><b>PAUL'S <span>POETRY</span></b><div><button class="btn d" onclick="document.getElementById('dash').style.display='block'">🔒 Dashboard</button> <a class="btn g" href="https://wa.me/256709478798">WhatsApp</a></div></header>
 
-<header><b>PAUL'S <span>POETRY</span></b><div style="display:flex;gap:8px"><button class="btn d" onclick="openAdmin()">🔒 Dashboard</button><a class="btn g" href="https://wa.me/256709478798">WhatsApp</a></div></header>
+<div class="box">
+<div style="font-size:28px;color:#f5c518;font-weight:900" id="clock">--:--:--</div>
+<div style="font-size:11px;color:#aaa" id="date">Kyotera, Uganda • LIVE</div>
+</div>
 
-<div class="clock
+<div class="box"><img src="paul.jpg" onerror="this.src='https://via.placeholder.com/100'"><h2 style="color:#f5c518">PAUL</h2><p style="color:#ccc;font-size:13px;text-align:left">I am Paul, 20 years, Kyotera Uganda. Real Ugandan love poems. Reader in the field.</p></div>
+
+<h2 style="padding:12px">My Poems 🔥 10</h2>
+
+<div class="card"><h3>THE COFFEE WE SHARE</h3><p>I wake before the kettle sings your name,
+You shuffle in, your hair a tangled crown,
+You steal my mug and never put it down.</p><div class="act"><button onclick="like(0)">❤️ Like <span id="l0">0</span></button><button onclick="share('THE COFFEE WE SHARE')">Share</button></div></div>
+
+<div class="card"><h3>HOW YOU FOLD MY SHIRTS</h3><p>You fold my shirts like you mean it,
+Not perfect, but with care in each crease.</p><div class="act"><button onclick="like(1)">❤️ Like <span id="l1">0</span></button><button onclick="share('HOW YOU FOLD MY SHIRTS')">Share</button></div></div>
+
+<div class="card"><h3>YOUR KEYS ON MY TABLE</h3><p>Your keys land loud on my table,
+A jingle that means you are home.</p><div class="act"><button onclick="like(2)">❤️ Like <span id="l2">0</span></button><button onclick="share('YOUR KEYS ON MY TABLE')">Share</button></div></div>
+
+<div class="card"><h3>GROCERY LIST LOVE</h3><p>We write our grocery list on the back of bills,
+Your handwriting big, mine small.</p><div class="act"><button onclick="like(3)">❤️ Like <span id="l3">0</span></button><button onclick="share('GROCERY LIST LOVE')">Share</button></div></div>
+
+<div class="card"><h3>WE COOK UGLY RICE</h3><p>We cook rice that always sticks a bit,
+But perfect evenings we have.</p><div class="act"><button onclick="like(4)">❤️ Like <span id="l4">0</span></button><button onclick="share('WE COOK UGLY RICE')">Share</button></div></div>
+
+<div class="card"><h3>THE DISHES AT MIDNIGHT</h3><p>We do dishes at midnight again,
+Because we procrastinated all day.</p><div class="act"><button onclick="like(5)">❤️ Like <span id="l5">0</span></button><button onclick="share('THE DISHES AT MIDNIGHT')">Share</button></div></div>
+
+<div class="card"><h3>NIGHT BUS YOUR HEAD</h3><p>The night bus smells of diesel,
+Your head finds my shoulder.</p><div class="act"><button onclick="like(6)">❤️ Like <span id="l6">0</span></button><button onclick="share('NIGHT BUS')">Share</button></div></div>
+
+<div class="card"><h3>YOUR UMBRELLA IS TOO SMALL</h3><p>Your umbrella is too small for two,
+We both get wet, but never let go.</p><div class="act"><button onclick="like(7)">❤️ Like <span id="l7">0</span></button><button onclick="share('YOUR UMBRELLA')">Share</button></div></div>
+
+<div class="card"><h3>HOW YOU STEAL MY HOODIE</h3><p>You steal my hoodie every cold morning,
+And you are right, it does.</p><div class="act"><button onclick="like(8)">❤️ Like <span id="l8">0</span></button><button onclick="share('HOW YOU STEAL MY HOODIE')">Share</button></div></div>
+
+<div class="card"><h3>THE WAY YOU CHARGE MY PHONE</h3><p>My phone dies always at eleven percent,
+You charge my chaos with your calm.</p><div class="act"><button onclick="like(9)">❤️ Like <span id="l9">0</span></button><button onclick="share('THE WAY YOU CHARGE MY PHONE')">Share</button></div></div>
+
+<div id="dash">
+<div style="display:flex;justify-content:space-between"><b>DASHBOARD - Password: Paul</b><button onclick="document.getElementById('dash').style.display='none'" style="padding:6px 12px;border-radius:20px">X Close</button></div>
+<div style="margin-top:12px;background:#111;padding:12px;border-radius:12px"><input type="password" id="pw" placeholder="Enter password Paul" style="width:100%;padding:10px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:10px"><button onclick="if(document.getElementById('pw').value==='Paul'){document.getElementById('dashInner').style.display='block'}else{alert('Wrong')}" style="width:100%;margin-top:8px;padding:10
