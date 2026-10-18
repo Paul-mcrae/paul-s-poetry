@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paul - Kyotera Poet</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paul Kaganda - Kyotera Poet</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#0a0a0a;color:#fff;font-family:system-ui,sans-serif;padding:16px}
 .card{max-width:540px;margin:0 auto;border:2.5px solid #FFC400;border-radius:26px;padding:26px;background:#151515;text-align:center}
 .avatar{width:135px;height:135px;border-radius:50%;border:3.5px solid #FFC400;object-fit:cover;margin:0 auto;display:block}
-h1{color:#FFC400;margin:16px 0 8px;font-size:32px;letter-spacing:2px}
+h1{color:#FFC400;margin:16px 0 8px;font-size:30px}
 .tag{background:#FFC400;color:#000;padding:7px 16px;border-radius:20px;font-weight:900;font-size:13px;display:inline-block}
 p.bio{color:#ccc;margin:16px 0 0;line-height:1.6;font-size:15px}
 .poems{max-width:540px;margin:22px auto}
@@ -29,17 +28,15 @@ p.bio{color:#ccc;margin:16px 0 0;line-height:1.6;font-size:15px}
 </style>
 </head>
 <body>
-
 <div class="card">
-<img class="avatar" src="paul_final.jpg?v=99" alt="Paul">
-<h1>PAUL</h1>
+<img class="avatar" src="paul_final.jpg?v=99" alt="Paul Kaganda">
+<h1>PAUL KAGANDA</h1>
 <div class="tag">KYOTERA POET • READER IN THE FIELD</div>
 <p class="bio">I am Paul Kaganda, Kyotera Uganda. I write about love in small things - coffee, shirts, keys, ugly rice. Real Ugandan love. Found reading in the fields.</p>
 </div>
-
 <div class="poems" id="poems"></div>
 
-<!-- OPTION 2 - GLOBAL COMMENTS -->
+<!-- OPTION 2 - GLOBAL PERMANENT COMMENTS -->
 <div class="giscus-wrapper">
 <h3>💬 Global Comments (Everyone Sees)</h3>
 <p style="color:#999;font-size:13px;text-align:center;margin-bottom:12px">Login with GitHub to comment permanently</p>
@@ -87,8 +84,8 @@ function renderPoems(){
   const comments=loadComments(p.id);
   const div=document.createElement('div'); div.className='poem-card';
   div.innerHTML=`<div class="poem-title">🔥 ${p.title}</div><div class="poem-text">${p.text}</div>
-  <div class="comment-section"><h4>💛 Quick Comments (${comments.length})</h4>
-  <div class="comment-list">${comments.map(c=>`<div class="comment"><b>${c.name}</b> <span style="color:#777;font-size:11px">${c.date}</span><br>${c.text}</div>`).join('') || '<div style="color:#666;font-size:13px">Be first to comment!</div>'}</div>
+  <div class="comment-section"><h4>💛 Quick Comments (${comments.length}) - Instant</h4>
+  <div class="comment-list" id="list-${p.id}">${comments.map(c=>`<div class="comment"><b>${c.name}</b> <span style="color:#777;font-size:11px">${c.date}</span><br>${c.text}</div>`).join('') || '<div style="color:#666;font-size:13px">Be first to comment!</div>'}</div>
   <div class="comment-form"><input id="name-${p.id}" placeholder="Your name"><textarea id="text-${p.id}" rows="2" placeholder="Write a comment..."></textarea><button onclick="postComment('${p.id}')">Post Quick Comment</button></div></div>`;
   container.appendChild(div);
  });
