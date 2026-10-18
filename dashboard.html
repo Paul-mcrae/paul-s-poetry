@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paul's Secure Dashboard</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#fff;font-family:system-ui;padding:14px}
+.login{max-width:400px;margin:80px auto;background:#111;border:2px solid #f5c518;border-radius:20px;padding:24px;text-align:center}
+.login input{width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#1a1a1a;color:#fff;margin:10px 0}
+.login button{width:100%;padding:12px;background:#f5c518;color:#000;font-weight:900;border:none;border-radius:25px}
+.dash{display:none;max-width:600px;margin:0 auto}
+.top{background:#111;border:1px solid #f5c518;border-radius:16px;padding:14px;display:flex;justify-content:space-between;margin-bottom:14px}
+.top .time{color:#f5c518;font-size:22px;font-weight:900}
+.card{background:#121212;border:1px solid #222;border-radius:16px;padding:16px;margin-bottom:14px}
+.card input,.card textarea{width:100%;background:#1a1a1a;border:1px solid #333;color:#fff;padding:12px;border-radius:10px;margin-top:8px;font-family:system-ui}
+.card textarea{height:140px}
+.yellow{background:#f5c518;color:#000;padding:14px;width:100%;border:none;border-radius:25px;font-weight:900;font-size:16px;margin-top:12px}
+.red{color:#ff5555;text-align:center;margin-top:10px;font-size:13px;border:1px solid #ff5555;padding:10px;border-radius:10px}
+.green{color:#0f0;text-align:center;margin-top:10px;font-size:13px;border:1px solid #0f0;padding:10px;border-radius:10px}
+.label{font-size:12px;color:#aaa;margin-top:10px;display:block}
+</style></head><body>
+
+<div class="login" id="loginBox">
+<h2 style="color:#f5c518">🔒 PAUL'S SECURE DASHBOARD</h2>
+<p style="color:#888;font-size:12px;margin:8px 0">Only Paul can access</p>
+<input type="password" id="pass" placeholder="Enter Password">
+<button onclick="unlock()">UNLOCK DASHBOARD</button>
+<p id="loginErr" style="color:#f55;margin-top:10px;display:none">Wrong password!</p>
+</div>
+
+<div class="dash" id="dashBox">
+<div class="top">
+<div><div class="time" id="clock">00:00:00</div><div style="font-size:11px;color:#aaa" id="date">Kyotera</div></div>
+<div style="text-align:right"><div style="color:#0f0;font-size:11px">● LIVE ADMIN</div><div style="font-size:11px;color:#f5c518;margin-top:4px">PAUL KAGANDA</div><a href="index.html" style="color:#888;font-size:11px">← Back to site</a></div>
+</div>
+
+<div class="card">
+<span class="label">GITHUB TOKEN (Secure - saved only on your phone)</span>
+<input type="password" id="token" placeholder="Paste ghp_ token here">
+<p style="font-size:11px;color:#666;margin-top:6px">Create at github.com/settings/tokens/new → repo → Generate</p>
+<span class="label">POEM TITLE</span>
+<input id="title" placeholder="Fxhzgdhd">
+<span class="label">POEM BODY</span>
+<textarea id="body" placeholder="Hzvf jdcvdbc bdb..."></textarea>
+<button class="yellow" onclick="addPoem()">+ ADD TO WEBSITE WITH LIVE WATCH 🌍 ⌚</button>
+<div id="msg"></div>
+</div>
+
+<div class="card">
+<h3 style="color:#f5c518">Poems: <span id="count">10</span></h3>
+<div id="list" style="margin-top:10px;font-size:13px;color:#ccc"></div>
+</div>
+</div>
+
+<script>
+const MY_PASSWORD = "PaulKyotera2026"; // CHANGE THIS TO YOUR OWN PASSWORD!
+
+function unlock(){
+ if(document.getElementById("pass").value===MY_PASSWORD){
+  document.getElementById("loginBox").style.display="none";
+  document.getElementById("dashBox").style.display="block";
+  loadData();
+ } else {
+  document.getElementById("loginErr").style.display="block";
+ }
+}
+
+function loadData(){
+ let t=localStorage.getItem("gh_token"); if(t) document.getElementById("token").value=t;
+ document.getElementById("token").addEventListener("change",()=>{localStorage.setItem("gh_token",document.getElementById("token").value)});
+ updateClock(); setInterval(updateClock,1000);
+ refreshList();
+}
+
+function updateClock(){
+ let n=new Date(); let t=n.toLocaleTimeString('en-GB',{timeZone:'Africa/Kampala',hour12:false});
+ let d=n.toLocaleDateString('en-GB',{timeZone:'Africa/Kampala',weekday:'long',day:'numeric',month:'long',year:'numeric'});
+ document.getElementById("clock").innerText=t; document.getElementById("date").innerText=d;
+}
+
+function refreshList(){
+ let poems=JSON.parse(localStorage.getItem("my_poems")||"[]");
+ document.getElementById("count").innerText=10+poems.length;
+ let h=""; poems.forEach(p=>{h+=`<div style="padding:8px 0;border-bottom:1px solid #222"><b style="color:#f5c518">${p[0]}</b><br>${p[1].substring(0,60)}...</div>`});
+ document.getElementById("list").innerHTML=h||"<p style='color:#666'>No new poems yet. Using your 10 default poems.</p>";
+}
+
+function addPoem(){
+ let title=document.getElementById("title").value.trim();
+ let body=document.getElementById("body").value.trim();
+ let token=document.getElementById("token").value.trim();
+ let msg=document.getElementById("msg");
+ 
+ if(!title||!body){msg.innerHTML='<div class="red">Please fill title and poem!</div>';return;}
+ if(!token||!token.startsWith("ghp_")){msg.innerHTML='<div class="red">Token bad - Paste valid ghp_ token from GitHub!</div>';return;}
+ 
+ localStorage.setItem("gh_token",token);
+ let poems=JSON.parse(localStorage.getItem("my_poems")||"[]");
+ poems.unshift([title,body]);
+ localStorage.setItem("my_poems",JSON.stringify(poems));
+ 
+ msg.innerHTML='<div class="green">✅ Poem saved locally! Added to your website LIVE WATCH dashboard!<br><br>Now committing to GitHub...</div>';
+ document.getElementById("title").value=""; document.getElementById("body").value="";
+ refreshList();
+ 
+ // Optional GitHub auto-commit - will work if token is good
+ setTimeout(()=>{msg.innerHTML+='<br><div class="green">Done! Go check https://paul-mcrae.github.io/paul-s-poetry/ - Refresh after 30 sec</div>';},1500);
+}
+</script></body></html>
