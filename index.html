@@ -12,83 +12,17 @@ body{background:#0a0a0a;color:#fff;font-family:system-ui,sans-serif;padding:16px
 h1{color:#FFC400;margin:16px 0 8px;font-size:32px;letter-spacing:2px}
 .tag{background:#FFC400;color:#000;padding:7px 16px;border-radius:20px;font-weight:900;font-size:13px;display:inline-block}
 .bio{color:#ccc;margin:16px 0 0;line-height:1.6;font-size:15px}
+.nav{display:flex;justify-content:center;gap:10px;margin:18px auto;max-width:540px}
+.nav button{background:#151515;border:1px solid #FFC400;color:#FFC400;padding:10px 18px;border-radius:20px;font-weight:700;cursor:pointer}
+.nav button.active{background:#FFC400;color:#000}
+.dashboard{max-width:540px;margin:0 auto 18px;background:#151515;border:1px solid #FFC400;border-radius:18px;padding:18px;display:none}
+.dashboard h3{color:#FFC400;margin-bottom:12px}
+.stat{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #222;font-size:14px}
 .poem-wrap{max-width:540px;margin:22px auto;border:1px solid #2a2a2a;border-radius:18px;padding:20px;background:#151515}
 .poem-text{white-space:pre-wrap;line-height:1.7;font-size:15px;color:#eee}
 .actions{display:flex;gap:18px;margin-top:16px;border-top:1px solid #222;padding-top:12px;font-size:14px}
-.act{cursor:pointer;display:flex;align-items:center;gap:6px;user-select:none}
+.act{cursor:pointer;display:flex;align-items:center;gap:6px}
 .act:hover{color:#FFC400}
 .act.liked{color:#FFC400}
 .comment-box{margin-top:12px;display:none}
-.comment-box input{width:100%;background:#0f0f0f;border:1px solid #333;color:#fff;border-radius:10px;padding:10px;font-size:14px}
-.comments{margin-top:10px;font-size:13px;color:#ccc}
-.comments div{background:#1e1e1e;padding:6px 10px;border-radius:8px;margin:6px 0;border-left:2px solid #FFC400}
-</style>
-</head>
-<body>
-<div class="card">
-<img class="avatar" src="paul_final.jpg?v=99" alt="Paul">
-<h1>PAUL</h1>
-<div class="tag">KYOTERA POET • READER IN THE FIELD</div>
-<p class="bio">I am Paul, Kyotera Uganda. Real Ugandan love poems.</p>
-</div>
-
-<div class="poem-wrap" id="p1">
-<div class="poem-text">If I had a heart to take with a chance to be loved by you,
-I'd consider coming home, before I'm reminded of the 1,859 miles one of us would have to walk, and what could happen if we were just in a room to talk.
-
-Like me in your clothes eating breakfast, you in my bed fast asleep...
-
-You were beautiful, funny, thoughtful, your eyes weren't hungry, they pleaded to be gentle. So if I had a heart to take, you wouldn't need to convince it, for if you have already stolen something, you cannot steal it again.</div>
-
-<div class="actions">
-<div class="act" onclick="like('p1')" id="like-p1">❤️ <span id="lc-p1">0</span> Like</div>
-<div class="act" onclick="sharePoem()">🔗 Share</div>
-<div class="act" onclick="toggleComment('p1')">💬 Comment</div>
-</div>
-
-<div class="comment-box" id="box-p1">
-<input id="inp-p1" placeholder="Write a comment..." onkeydown="if(event.key==='Enter') addComment('p1')">
-<div class="comments" id="com-p1"></div>
-</div>
-</div>
-
-<script>
-// Photo fresh
-document.querySelector('.avatar').src='paul_final.jpg?v='+Date.now();
-
-// LIKE - saves count
-function like(id){
-  let c = parseInt(localStorage.getItem('like-'+id)||'0');
-  let liked = localStorage.getItem('liked-'+id)=='1';
-  if(liked){ c--; localStorage.setItem('liked-'+id,'0'); document.getElementById('like-'+id).classList.remove('liked'); }
-  else{ c++; localStorage.setItem('liked-'+id,'1'); document.getElementById('like-'+id).classList.add('liked'); }
-  localStorage.setItem('like-'+id,c);
-  document.getElementById('lc-'+id).innerText=c;
-}
-// Load like
-document.getElementById('lc-p1').innerText=localStorage.getItem('like-p1')||'0';
-if(localStorage.getItem('liked-p1')=='1') document.getElementById('like-p1').classList.add('liked');
-
-// SHARE
-function sharePoem(){
-  if(navigator.share){ navigator.share({title:'Paul - Poetry', url:window.location.href}); }
-  else{ navigator.clipboard.writeText(window.location.href); alert('Link copied! Share it.'); }
-}
-
-// COMMENT
-function toggleComment(id){ const b=document.getElementById('box-'+id); b.style.display=b.style.display=='block'?'none':'block'; }
-function addComment(id){
-  const inp=document.getElementById('inp-'+id);
-  const txt=inp.value.trim(); if(!txt) return;
-  const list=JSON.parse(localStorage.getItem('com-'+id)||'[]'); list.push(txt);
-  localStorage.setItem('com-'+id,JSON.stringify(list));
-  inp.value=''; renderCom(id);
-}
-function renderCom(id){
-  const list=JSON.parse(localStorage.getItem('com-'+id)||'[]');
-  document.getElementById('com-'+id).innerHTML=list.map(t=>`<div>${t}</div>`).join('');
-}
-renderCom('p1');
-</script>
-</body>
-</html>
+.comment-box input{width:100%;background:#0f0f0f;border:1px solid #333;color:#fff;border-radius:10px
