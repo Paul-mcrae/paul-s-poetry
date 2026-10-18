@@ -1,108 +1,44 @@
-<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PAUL</title>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PAUL - Kyotera Poet</title>
 <style>
-body{background:#000;color:#fff;font-family:system-ui;margin:0;padding-bottom:60px}
-header{background:#111;padding:12px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #222;position:sticky;top:0;z-index:10}
+body{background:#000;color:#fff;font-family:system-ui;margin:0;padding-bottom:70px}
+header{background:#111;padding:12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;border-bottom:1px solid #222}
 header b span{color:#f5c518}
-.btn{padding:10px 16px;border-radius:25px;font-weight:800;font-size:13px;text-decoration:none}
+.btn{padding:10px 16px;border-radius:25px;font-weight:800;font-size:13px;text-decoration:none;display:inline-block;cursor:pointer}
 .g{background:#f5c518;color:#000}.d{background:#222;color:#fff;border:1px solid #555}
 .clock{background:#111;border:2px solid #f5c518;border-radius:16px;padding:14px;margin:12px;display:flex;justify-content:space-between;align-items:center}
-.clock .t{font-size:30px;color:#f5c518;font-weight:900}
+.clock .t{font-size:28px;color:#f5c518;font-weight:900}
 .about{border:2px solid #f5c518;border-radius:22px;margin:12px;padding:18px;text-align:center;background:#121212}
 .about img{width:110px;height:110px;border-radius:50%;border:3px solid #f5c518;object-fit:cover;background:#222}
 .card{background:#121212;border:1px solid #222;border-radius:16px;padding:16px;margin:12px}
 .card h3{color:#f5c518}
 .card p{white-space:pre-line;color:#ddd;font-size:14px;line-height:1.6;margin-top:6px}
-.acts{display:flex;gap:6px;margin-top:12px;border-top:1px solid #222;padding-top:10px}
-.acts button{background:#1e1e1e;border:1px solid #333;color:#fff;padding:8px 12px;border-radius:20px;font-size:12px}
-.liked{background:#f5c518!important;color:#000!important}
+.acts{display:flex;gap:6px;margin-top:12px;border-top:1px solid #222;padding-top:10px;flex-wrap:wrap}
+.acts button{background:#1e1e1e;border:1px solid #333;color:#fff;padding:8px 12px;border-radius:20px;font-size:12px;cursor:pointer}
+.acts button.liked{background:#f5c518!important;color:#000!important;font-weight:800}
 .cBox{display:none;margin-top:10px;border-top:1px solid #222;padding-top:10px}
 .cBox input{width:100%;padding:11px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:10px}
 .cItem{background:#1a1a1a;border-left:3px solid #f5c518;padding:7px 10px;border-radius:8px;margin-top:6px;font-size:13px}
-#shareM,#admin{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;display:none;align-items:center;justify-content:center;padding:16px}
-.shareBox,.dashBox{background:#111;border:2px solid #f5c518;border-radius:20px;padding:18px;max-width:350px;width:100%;text-align:center}
-.shareBox a,.shareBox button,.dashBox button{width:100%;margin:8px 0;padding:12px;border-radius:25px;text-decoration:none;font-weight:800;font-size:14px;border:none;display:block}
+#shareM{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:9999;display:none;align-items:center;justify-content:center;padding:16px}
+.shareBox{background:#111;border:2px solid #f5c518;border-radius:20px;padding:18px;max-width:350px;width:100%;text-align:center}
+.shareBox a,.shareBox button{width:100%;margin:8px 0;padding:12px;border-radius:25px;text-decoration:none;font-weight:800;font-size:14px;border:none;display:block;cursor:pointer}
 .wa{background:#25D366;color:#fff}.fb{background:#1877F2;color:#fff}.x{background:#fff;color:#000}.cp{background:#222;color:#f5c518;border:1px solid #f5c518}
-#admin{background:#000;align-items:flex-start;overflow:auto;display:none}
-.statGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
-.stat{background:#111;border:1px solid #222;border-radius:12px;padding:12px}
-.stat b{color:#f5c518;font-size:20px;display:block}
+#admin{position:fixed;inset:0;background:#000;z-index:9999;display:none;overflow:auto}
+.loginBox{max-width:340px;margin:70px auto;background:#111;border:2px solid #f5c518;border-radius:20px;padding:22px;text-align:center}
+.topBar{background:#111;border-bottom:1px solid #222;padding:14px;display:flex;justify-content:space-between;position:sticky;top:0;z-index:5}
+.statGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
+.stat{background:#121212;border:1px solid #222;border-radius:14px;padding:14px}
+.stat b{font-size:20px;color:#f5c518;display:block}.stat span{font-size:10px;color:#888;letter-spacing:1px}
+.tabs{display:flex;gap:6px;padding:10px 12px;overflow:auto;border-bottom:1px solid #111}
+.tabs button{background:#1a1a1a;border:1px solid #333;color:#aaa;padding:8px 12px;border-radius:20px;font-size:11px;white-space:nowrap}
+.tabs button.on{background:#f5c518;color:#000;font-weight:900}
+.tab{display:none;padding:12px}.tab.on{display:block}
+.input{width:100%;padding:12px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:12px;margin-top:8px}
+.poemRow{background:#111;border:1px solid #222;border-radius:12px;padding:10px;margin-bottom:8px;display:flex;justify-content:space-between;gap:8px;align-items:center}
 </style></head><body>
 <header><b>PAUL'S <span>POETRY</span></b><div><button class="btn d" onclick="openDash()">🔒 Dashboard</button> <a class="btn g" href="https://wa.me/256709478798">WhatsApp</a></div></header>
 
 <div class="clock"><div><div class="t" id="clock">Loading...</div><div style="font-size:11px;color:#aaa" id="date">Kyotera, Uganda • LIVE</div></div><div style="text-align:right;color:#0f0;font-size:11px;font-weight:800">● LIVE<br><span style="color:#f5c518" id="sec">--</span></div></div>
 
-<div class="about"><img src="paul.jpg?v=300" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/Paul-mcrae/paul-s-poetry/main/paul.jpg'"><h2 style="color:#f5c518">PAUL</h2><div style="background:#f5c518;color:#000;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block;margin:8px 0">KYOTERA POET • READER IN THE FIELD</div><p style="color:#ccc;font-size:13px;text-align:left">I am Paul, 20 years, Kyotera Uganda. Real Ugandan love poems - coffee, shirts, keys, ugly rice. Reader in the field.</p></div>
+<div class="about"><img src="paul.jpg?v=400" onerror="this.src='paul.jpg'"><h2 style="color:#f5c518">PAUL</h2><div style="background:#f5c518;color:#000;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block;margin:8px 0">KYOTERA POET • READER IN THE FIELD</div><p style="color:#ccc;font-size:13px;text-align:left">I am Paul, 20 years, Kyotera Uganda. Real Ugandan love poems - coffee, shirts, keys, ugly rice. Reader in the field.</p></div>
 
-<h2 style="padding:12px">My Poems 🔥 10</h2>
-
-<div class="card"><h3>THE COFFEE WE SHARE</h3><p>I wake before the kettle sings your name,
-You shuffle in, your hair a tangled crown.</p><div class="acts"><button id="like0" onclick="like(0)">❤️ <span id="lc0">0</span></button><button onclick="share(0,'THE COFFEE WE SHARE')">↗️ Share</button><button onclick="comment(0)">💬 Comment</button></div><div id="b0" class="cBox"><input id="i0" placeholder="Comment..."><button onclick="post(0)" style="margin-top:6px;background:#f5c518;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Post</button><div id="list0"></div></div></div>
-
-<div class="card"><h3>HOW YOU FOLD MY SHIRTS</h3><p>You fold my shirts like you mean it,
-Not perfect, but with care.</p><div class="acts"><button id="like1" onclick="like(1)">❤️ <span id="lc1">0</span></button><button onclick="share(1,'HOW YOU FOLD MY SHIRTS')">↗️ Share</button><button onclick="comment(1)">💬 Comment</button></div><div id="b1" class="cBox"><input id="i1" placeholder="Comment..."><button onclick="post(1)" style="margin-top:6px;background:#f5c518;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Post</button><div id="list1"></div></div></div>
-
-<div class="card"><h3>YOUR KEYS ON MY TABLE</h3><p>Your keys land loud on my table,
-A jingle that means you are home.</p><div class="acts"><button id="like2" onclick="like(2)">❤️ <span id="lc2">0</span></button><button onclick="share(2,'YOUR KEYS')">↗️ Share</button><button onclick="comment(2)">💬 Comment</button></div><div id="b2" class="cBox"><input id="i2" placeholder="Comment..."><button onclick="post(2)" style="margin-top:6px;background:#f5c518;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Post</button><div id="list2"></div></div></div>
-
-<div class="card"><h3>GROCERY LIST LOVE</h3><p>We write our grocery list on the back of bills.</p><div class="acts"><button id="like3" onclick="like(3)">❤️ <span id="lc3">0</span></button><button onclick="share(3,'GROCERY LIST')">↗️ Share</button><button onclick="comment(3)">💬 Comment</button></div><div id="b3" class="cBox"><input id="i3" placeholder="Comment..."><button onclick="post(3)" style="margin-top:6px;background:#f5c518;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Post</button><div id="list3"></div></div></div>
-
-<div class="card"><h3>WE COOK UGLY RICE</h3><p>We cook rice that always sticks a bit,
-But perfect evenings we have.</p><div class="acts"><button id="like4" onclick="like(4)">❤️ <span id="lc4">0</span></button><button onclick="share(4,'UGLY RICE')">↗️ Share</button><button onclick="comment(4)">💬 Comment</button></div><div id="b4" class="cBox"><input id="i4" placeholder="Comment..."><button onclick="post(4)" style="margin-top:6px;background:#f5c518;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Post</button><div id="list4"></div></div></div>
-
-<div class="card"><h3>THE DISHES AT MIDNIGHT</h3><p>We do dishes at midnight again.</p><div class="acts"><button id="like5" onclick="like(5)">❤️ <span id="lc5">0</span></button><button onclick="share(5,'DISHES AT MIDNIGHT')">↗️ Share</button><button onclick="comment(5)">💬 Comment</button></div><div id="b5" class="cBox"><input id="i5" placeholder="Comment..."><button onclick="post(5)" style="margin-top:6px;background:#f5c518;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Post</button><div id="list5"></div></div></div>
-
-<div class="card"><h3>NIGHT BUS</h3><p>Your head finds my shoulder, heavy, yet.</p><div class="acts"><button id="like6" onclick="like(6)">❤️ <span id="lc6">0</span></button><button onclick="share(6,'NIGHT BUS')">↗️ Share</button><button onclick="comment(6)">💬 Comment</button></div><div id="b6" class="cBox"><input id="i6" placeholder="Comment..."><button onclick="post(6)" style="margin-top:6px;background:#f5c518;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Post</button><div id="list6"></div></div></div>
-
-<div class="card"><h3>YOUR UMBRELLA IS TOO SMALL</h3><p>We both get wet, but never let go.</p><div class="acts"><button id="like7" onclick="like(7)">❤️ <span id="lc7">0</span></button><button onclick="share(7,'UMBRELLA')">↗️ Share</button><button onclick="comment(7)">💬 Comment</button></div><div id="b7" class="cBox"><input id="i7" placeholder="Comment..."><button onclick="post(7)" style="margin-top:6px;background:#f5c518;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Post</button><div id="list7"></div></div></div>
-
-<div class="card"><h3>HOW YOU STEAL MY HOODIE</h3><p>You steal my hoodie every cold morning.</p><div class="acts"><button id="like8" onclick="like(8)">❤️ <span id="lc8">0</span></button><button onclick="share(8,'HOODIE')">↗️ Share</button><button onclick="comment(8)">💬 Comment</button></div><div id="b8" class="cBox"><input id="i8" placeholder="Comment..."><button onclick="post(8)" style="margin-top:6px;background:#f5c518;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Post</button><div id="list8"></div></div></div>
-
-<div class="card"><h3>THE WAY YOU CHARGE MY PHONE</h3><p>My phone dies always at eleven percent,
-You charge my chaos with your calm.</p><div class="acts"><button id="like9" onclick="like(9)">❤️ <span id="lc9">0</span></button><button onclick="share(9,'CHARGE MY PHONE')">↗️ Share</button><button onclick="comment(9)">💬 Comment</button></div><div id="b9" class="cBox"><input id="i9" placeholder="Comment..."><button onclick="post(9)" style="margin-top:6px;background:#f5c518;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:800">Post</button><div id="list9"></div></div></div>
-
-<div id="shareM"><div class="shareBox"><h3 style="color:#f5c518">Share Poem</h3><a id="wa" class="wa" target="_blank">WhatsApp</a><a id="fb" class="fb" target="_blank">Facebook</a><a id="x" class="x" target="_blank">X / Twitter</a><button class="cp" onclick="copy()">Copy Link</button><button onclick="document.getElementById('shareM').style.display='none'" style="background:#222;color:#aaa;border:1px solid #333">Close</button></div></div>
-
-<div id="admin">
-<div style="width:100%;max-width:380px;margin:20px auto;background:#000;min-height:100vh">
-<div id="loginBox" class="dashBox" style="margin-top:60px"><h2 style="color:#f5c518">🔒 PRO DASHBOARD</h2><p style="font-size:11px;color:#888;margin:6px 0">Secure • Password: Paul</p><input type="password" id="pw" placeholder="Enter password" style="width:100%;padding:12px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:12px;margin-top:8px"><button onclick="login()" style="background:#f5c518;color:#000">UNLOCK</button><p id="err" style="color:#f55;display:none">Wrong password</p><button onclick="document.getElementById('admin').style.display='none'" style="background:#222;color:#aaa;border:1px solid #333">Back to site</button></div>
-<div id="dashInner" style="display:none;padding:12px">
-<div style="display:flex;justify-content:space-between;align-items:center;background:#111;padding:12px;border-bottom:1px solid #222"><b>PAUL'S PRO <span style="color:#f5c518">DASHBOARD</span></b><button onclick="document.getElementById('admin').style.display='none'" style="background:#222;color:#fff;border:1px solid #444;padding:6px 12px;border-radius:20px;width:auto;margin:0">✕</button></div>
-<div class="statGrid"><div class="stat"><b id="stP">10</b><span>📝 Poems</span></div><div class="stat"><b id="stL">0</b><span>❤️ Likes</span></div><div class="stat"><b id="stC">0</b><span>💬 Comments</span></div><div class="stat"><b id="stV">1</b><span>👁️ Views</span></div></div>
-<div class="card"><h3>⚙️ Security - Change Password</h3><input type="password" id="old" placeholder="Current password" style="width:100%;padding:11px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:10px;margin-top:8px"><input type="password" id="ne" placeholder="New password" style="width:100%;padding:11px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:10px;margin-top:8px"><input type="password" id="cn" placeholder="Confirm new" style="width:100%;padding:11px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:10px;margin-top:8px"><button onclick="changePw()" style="width:100%;padding:11px;background:#222;color:#f5c518;border:1px solid #f5c518;border-radius:20px;margin-top:8px;font-weight:800">Update Password</button><div id="msg"></div></div>
-<div class="card"><h3>✍️ Add Poem</h3><input id="pt" placeholder="Title" style="width:100%;padding:11px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:10px;margin-top:8px"><textarea id="pb" placeholder="Poem..." style="width:100%;height:80px;padding:11px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:10px;margin-top:8px"></textarea><button onclick="addPoem()" style="width:100%;padding:11px;background:#f5c518;color:#000;border:none;border-radius:20px;font-weight:900;margin-top:8px">+ PUBLISH</button></div>
-</div>
-</div>
-</div>
-
-<script>
-// LIVE WATCH - SIMPLE VERSION THAT WORKS ON ALL PHONES
-function updateClock(){
-var now=new Date();
-var timeStr=now.toLocaleTimeString();
-var dateStr=now.toDateString();
-var secStr=now.getSeconds()+' sec';
-var c=document.getElementById('clock');
-if(c){c.innerHTML=timeStr;}
-var d=document.getElementById('date');
-if(d){d.innerHTML=dateStr+' • Kyotera, Uganda • LIVE';}
-var s=document.getElementById('sec');
-if(s){s.innerHTML=secStr;}
-}
-setInterval(updateClock,1000);
-updateClock();
-
-function getPass(){try{return localStorage.getItem('paul_pass')||'Paul'}catch(e){return 'Paul'}}
-function like(i){try{if(localStorage.getItem('liked_'+i)=='1'){alert('Already liked ❤️');return}localStorage.setItem('liked_'+i,'1');var v=parseInt(localStorage.getItem('like_'+i)||'0')+1;localStorage.setItem('like_'+i,v);var el=document.getElementById('lc'+i);if(el)el.innerHTML=v;var b=document.getElementById('like'+i);if(b)b.className='liked';upd();}catch(e){}}
-function comment(i){var b=document.getElementById('b'+i);if(b){b.style.display=b.style.display=='block'?'none':'block'}}
-function post(i){try{var inp=document.getElementById('i'+i);if(!inp)return;var t=inp.value.replace(/</g,'').trim();if(!t)return;var k='com_'+i;var a=[];try{a=JSON.parse(localStorage.getItem(k)||'[]')}catch(e){a=[]}a.push(t);localStorage.setItem(k,JSON.stringify(a));inp.value='';load();upd();}catch(e){}}
-function load(){for(var j=0;j<10;j++){try{var k='com_'+j;var a=[];try{a=JSON.parse(localStorage.getItem(k)||'[]')}catch(e){a=[]}var el=document.getElementById('list'+j);if(!el)continue;var h='';for(var x=0;x<a.length;x++){h+='<div class="cItem">💬 '+a[x]+'</div>'}el.innerHTML=h;}catch(e){}}}
-function upd(){try{var l=0;for(var i=0;i<10;i++){l+=parseInt(localStorage.getItem('like_'+i)||'0')}var c=0;for(var j=0;j<10;j++){try{c+=JSON.parse(localStorage.getItem('com_'+j)||'[]').length}catch(e){}}var v=0;try{v=parseInt(localStorage.getItem('views')||'0')+1;localStorage.setItem('views',v)}catch(e){v=1}var sl=document.getElementById('stL');if(sl)sl.innerHTML=l;var sc=document.getElementById('stC');if(sc)sc.innerHTML=c;var sv=document.getElementById('stV');if(sv)sv.innerHTML=v;for(var k=0;k<10;k++){var lc=document.getElementById('lc'+k);if(lc){try{lc.innerHTML=localStorage.getItem('like_'+k)||'0'}catch(e){}}var lb=document.getElementById('like'+k);if(lb){try{if(localStorage.getItem('liked_'+k)=='1')lb.className='liked'}catch(e){}}}}catch(e){}}
-var curUrl='https://paul-mcrae.github.io/paul-s-poetry/';
-function share(i,title){try{var url=curUrl;var txt=title+' - '+url;var encT=encodeURIComponent(txt);var encU=encodeURIComponent(url);document.getElementById('wa').href='https://wa.me/?text='+encT;document.getElementById('fb').href='https://www.facebook.com/sharer/sharer.php?u='+encU;document.getElementById('x').href='https://twitter.com/intent/tweet?text='+encT;document.getElementById('shareM').style.display='flex';if(navigator.share){navigator.share({title:title,text:txt,url:url}).catch(function(){})}}catch(e){document.getElementById('shareM').style.display='flex'}}
-function copy(){try{navigator.clipboard.writeText(curUrl);alert('Copied!')}catch(e){prompt('Copy:',curUrl)}}
-function openDash(){document.getElementById('admin').style.display='flex';document.getElementById('loginBox').style.display='block';document.getElementById('dashInner').style.display='none';document.getElementById('pw').value='';var er=document.getElementById('err');if(er)er.style.display='none';}
-function login(){var p=document.getElementById('pw').value;if(p===getPass()){document.getElementById('loginBox').style.display='none';document.getElementById('dashInner').style.display='block';upd();}else{document.getElementById('err').style.display='block'}}
-function addPoem(){var t=document.getElementById('pt').value;var b=document.getElementById('pb').value;if(!t||!b){alert('Fill both');return}alert('Added: '+t+' - Will show after you tell me to hard-code it for all readers');document.getElementById('pt').value='';document.getElementById('pb').value='';}
-function changePw(){var o=document.getElementById('old').value;var n=document.getElementById('ne').value;var cn=document.getElementById('cn').value;var m=document.getElementById('msg');if(o!==getPass()){m.innerHTML='<p style="color:#f55">Wrong current</p>';return}if(n.length<3){m.innerHTML='<p style="color:#f55">Too short</p>';return}if(n!==cn){m.innerHTML='<p style="color:#f55">No match</p>';return}try{localStorage.setItem('paul_pass',n)}catch(e){}m.innerHTML='<p style="color:#0f0">Password changed to: '+n+'</p>';}
-try{load();upd();if(!localStorage.getItem('views'))localStorage.setItem('views','1')}catch(e){}
-</script></body></html>
+<h2 style="padding:12px">My Poems 🔥 10</
