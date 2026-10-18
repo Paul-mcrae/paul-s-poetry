@@ -1,106 +1,21 @@
-<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Paul's Secure Dashboard</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#fff;font-family:system-ui;padding:14px}
-.login{max-width:400px;margin:80px auto;background:#111;border:2px solid #f5c518;border-radius:20px;padding:24px;text-align:center}
-.login input{width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#1a1a1a;color:#fff;margin:10px 0}
-.login button{width:100%;padding:12px;background:#f5c518;color:#000;font-weight:900;border:none;border-radius:25px}
-.dash{display:none;max-width:600px;margin:0 auto}
-.top{background:#111;border:1px solid #f5c518;border-radius:16px;padding:14px;display:flex;justify-content:space-between;margin-bottom:14px}
-.top .time{color:#f5c518;font-size:22px;font-weight:900}
-.card{background:#121212;border:1px solid #222;border-radius:16px;padding:16px;margin-bottom:14px}
-.card input,.card textarea{width:100%;background:#1a1a1a;border:1px solid #333;color:#fff;padding:12px;border-radius:10px;margin-top:8px;font-family:system-ui}
-.card textarea{height:140px}
-.yellow{background:#f5c518;color:#000;padding:14px;width:100%;border:none;border-radius:25px;font-weight:900;font-size:16px;margin-top:12px}
-.red{color:#ff5555;text-align:center;margin-top:10px;font-size:13px;border:1px solid #ff5555;padding:10px;border-radius:10px}
-.green{color:#0f0;text-align:center;margin-top:10px;font-size:13px;border:1px solid #0f0;padding:10px;border-radius:10px}
-.label{font-size:12px;color:#aaa;margin-top:10px;display:block}
-</style></head><body>
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PAUL'S POETRY</title><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#fff;font-family:system-ui}header{background:#111;padding:12px 14px;display:flex;justify-content:space-between;position:sticky;top:0;border-bottom:1px solid #222;z-index:10}header b span{color:#f5c518}.wa{background:#f5c518;color:#000;padding:10px 18px;border-radius:30px;text-decoration:none;font-weight:800}.live-watch{background:linear-gradient(135deg,#111,#1a1a1a);border:1px solid #f5c518;border-radius:16px;padding:14px;margin:12px;display:flex;justify-content:space-between;align-items:center}.live-watch .time{font-size:32px;font-weight:900;color:#f5c518;letter-spacing:2px}.live-watch .date{font-size:12px;color:#aaa;margin-top:4px}.live-watch .right{text-align:right}.dot{display:inline-block;width:9px;height:9px;background:#0f0;border-radius:50%}.live{font-size:11px;color:#0f0;font-weight:800}.place{font-size:11px;color:#888;margin-top:2px}.about{background:linear-gradient(135deg,#121212,#1a1a1a);border:2px solid #f5c518;border-radius:20px;padding:24px;margin:12px;text-align:center}.about img{width:115px;height:115px;border-radius:50%;border:4px solid #f5c518;object-fit:cover;margin-bottom:10px}.about h2{color:#f5c518;font-size:22px}.age{background:#f5c518;color:#000;padding:5px 14px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block;margin:8px 0}.about p{color:#ccc;line-height:1.7;font-size:14px;text-align:left;white-space:pre-line;margin-top:10px}.about .btns{margin-top:16px;display:flex;gap:8px;justify-content:center}.about .btns a{background:#222;border:1px solid #333;color:#fff;padding:10px 18px;border-radius:25px;text-decoration:none;font-weight:800;font-size:13px}.about .btns a.gold{background:#f5c518;color:#000}.title{padding:18px 16px 8px;font-size:22px;font-weight:900}.card{background:#121212;border:1px solid #222;border-radius:16px;padding:16px;margin:12px}.card h3{color:#f5c518;margin-bottom:8px;font-size:14px}.card p{white-space:pre-line;line-height:1.6;color:#ddd;font-size:14px}.card p.short{max-height:75px;overflow:hidden;position:relative}.card p.short:after{content:"";position:absolute;bottom:0;left:0;right:0;height:35px;background:linear-gradient(transparent,#121212)}.read{color:#f5c518;background:none;border:1px solid #444;padding:7px 14px;border-radius:20px;margin-top:10px;font-weight:700;font-size:12px}.acts{display:flex;gap:8px;margin-top:12px;border-top:1px solid #222;padding-top:10px}.acts button{background:#222;border:1px solid #333;color:#fff;padding:7px 12px;border-radius:20px;font-size:12px}footer{text-align:center;padding:24px;color:#555;font-size:11px;border-top:1px solid #111;margin-top:20px}#admin{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:#000;z-index:999;padding:14px;overflow:auto}.admin-top{background:#111;border:1px solid #f5c518;border-radius:16px;padding:14px;display:flex;justify-content:space-between;margin-bottom:14px}.admin-card{background:#121212;border:1px solid #222;border-radius:16px;padding:16px;margin-bottom:14px}.admin-card input,.admin-card textarea{width:100%;background:#1a1a1a;border:1px solid #333;color:#fff;padding:12px;border-radius:10px;margin-top:8px}.admin-card textarea{height:120px}.yellow{background:#f5c518;color:#000;padding:14px;width:100%;border:none;border-radius:25px;font-weight:900;margin-top:12px}.login{max-width:400px;margin:60px auto;background:#111;border:2px solid #f5c518;border-radius:20px;padding:24px;text-align:center}.login input{width:100%;padding:12px;border-radius:10px;border:1px solid #333;background:#1a1a1a;color:#fff;margin:10px 0}.login button{width:100%;padding:12px;background:#f5c518;color:#000;font-weight:900;border:none;border-radius:25px}</style></head><body><header><b><span>PAUL'S</span> POETRY</b><div style="display:flex;gap:8px"><a class="wa" style="background:#222;color:#fff;border:1px solid #333" href="#" onclick="openAdmin();return false">🔒 Admin</a><a class="wa" href="https://wa.me/256709478798">WhatsApp</a></div></header><div class="live-watch"><div><div class="time" id="clock">00:00:00</div><div class="date" id="date">Loading Kyotera...</div></div><div class="right"><div><span class="dot"></span><span class="live"> LIVE</span></div><div class="place">📍 Kyotera, UG</div><div class="place" id="sec" style="color:#f5c518;font-weight:800">-- sec</div></div></div><div class="about"><img src="paul.jpg" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200'"><h2>PAUL KAGANDA</h2><div class="age">20 YEARS • KYOTERA POET</div><p>I am Paul Kaganda, 20 years, Kyotera Uganda. I write about love in small things - coffee, shirts, keys, ugly rice. Real Ugandan love.
 
-<div class="login" id="loginBox">
-<h2 style="color:#f5c518">🔒 PAUL'S SECURE DASHBOARD</h2>
-<p style="color:#888;font-size:12px;margin:8px 0">Only Paul can access</p>
-<input type="password" id="pass" placeholder="Enter Password">
-<button onclick="unlock()">UNLOCK DASHBOARD</button>
-<p id="loginErr" style="color:#f55;margin-top:10px;display:none">Wrong password!</p>
-</div>
+Reading "The Fault in Our Stars" in my village field taught me to write from heart.
 
-<div class="dash" id="dashBox">
-<div class="top">
-<div><div class="time" id="clock">00:00:00</div><div style="font-size:11px;color:#aaa" id="date">Kyotera</div></div>
-<div style="text-align:right"><div style="color:#0f0;font-size:11px">● LIVE ADMIN</div><div style="font-size:11px;color:#f5c518;margin-top:4px">PAUL KAGANDA</div><a href="index.html" style="color:#888;font-size:11px">← Back to site</a></div>
-</div>
+This website is my heart, live from Kyotera.</p><div class="btns"><a class="gold" href="https://wa.me/256709478798">Chat Me</a><a href="#poems">Read Poems</a></div></div><div class="title" id="poems">My Poems 🔥 <span id="pcount">10</span></div><div id="list"></div><footer>© 2026 PAUL'S POETRY • Kyotera • <span id="ft"></span><br><br>Made with ❤️ in Kyotera field</footer>
 
-<div class="card">
-<span class="label">GITHUB TOKEN (Secure - saved only on your phone)</span>
-<input type="password" id="token" placeholder="Paste ghp_ token here">
-<p style="font-size:11px;color:#666;margin-top:6px">Create at github.com/settings/tokens/new → repo → Generate</p>
-<span class="label">POEM TITLE</span>
-<input id="title" placeholder="Fxhzgdhd">
-<span class="label">POEM BODY</span>
-<textarea id="body" placeholder="Hzvf jdcvdbc bdb..."></textarea>
-<button class="yellow" onclick="addPoem()">+ ADD TO WEBSITE WITH LIVE WATCH 🌍 ⌚</button>
-<div id="msg"></div>
-</div>
-
-<div class="card">
-<h3 style="color:#f5c518">Poems: <span id="count">10</span></h3>
-<div id="list" style="margin-top:10px;font-size:13px;color:#ccc"></div>
-</div>
-</div>
+<div id="admin"><div class="login" id="loginBox"><h2 style="color:#f5c518">🔒 PAUL'S SECURE DASHBOARD</h2><p style="color:#888;font-size:12px;margin:8px 0">Only Paul - Password required</p><input type="password" id="pass" placeholder="Enter Password"><button onclick="unlock()">UNLOCK</button><p id="loginErr" style="color:#f55;margin-top:10px;display:none">Wrong password!</p><button onclick="closeAdmin()" style="margin-top:12px;background:#222;color:#fff;padding:8px 16px;border:1px solid #333;border-radius:20px">← Back to site</button></div><div id="dashBox" style="display:none;max-width:600px;margin:0 auto"><div class="admin-top"><div><div class="time" id="clock2" style="font-size:22px;color:#f5c518;font-weight:900">00:00:00</div><div style="font-size:11px;color:#aaa" id="date2">Kyotera</div></div><div style="text-align:right"><div style="color:#0f0;font-size:11px">● LIVE ADMIN</div><button onclick="closeAdmin()" style="margin-top:6px;background:#222;color:#fff;padding:6px 12px;border:1px solid #333;border-radius:20px;font-size:11px">✕ Close</button></div></div><div class="admin-card"><span style="font-size:12px;color:#aaa">POEM TITLE</span><input id="title" placeholder="Fxhzgdhd"><span style="font-size:12px;color:#aaa;margin-top:10px;display:block">POEM BODY</span><textarea id="body" placeholder="Your poem here..."></textarea><button class="yellow" onclick="addPoem()">+ ADD TO WEBSITE WITH LIVE WATCH 🌍 ⌚</button><div id="msg" style="margin-top:10px"></div></div><div class="admin-card"><h3 style="color:#f5c518">My Poems</h3><div id="adminList" style="margin-top:10px;font-size:13px;color:#ccc"></div><button onclick="if(confirm('Delete all new poems?')){localStorage.removeItem('my_poems');location.reload()}" style="margin-top:10px;background:#300;border:1px solid #511;color:#f88;padding:6px 12px;border-radius:20px;font-size:11px">Clear New Poems</button></div></div></div>
 
 <script>
-const MY_PASSWORD = "PaulKyotera2026"; // CHANGE THIS TO YOUR OWN PASSWORD!
+const MY_PASSWORD="PaulKyotera2026";
+const defaultPoems=[["THE COFFEE WE SHARE","I wake before the kettle sings your name,\nThe kitchen cold without your sleepy light,\nI measure two spoons just the same,\nOne strong for you, one soft and light,\nAnd wait to hear your morning feet.\n\nYou shuffle in, your hair a tangled crown,\nYour hoodie falling off one sleepy shoulder,\nYou steal my mug and never put it down,\nYou say I'm cold but pull me closer,\nAnd suddenly the day is warmer than the coffee."],["HOW YOU FOLD MY SHIRTS","You fold my shirts like you mean it,\nNot perfect, but with care in each crease,\nSleeves tucked in, buttons hiding,\nAs if you're telling them peace,\nStay here, he will be back."],["YOUR KEYS ON MY TABLE","Your keys land loud on my table,\nA jingle that means you are home,\nNo knock, no text, no fable,\nJust metal music, you have roamed,\nBack to where you belong."],["GROCERY LIST LOVE","We write our grocery list on the back of bills,\nYour handwriting big, mine cramped and small,\nMilk, bread, eggs, and your little frills,\nChocolate that you say is for us all,\nBut I know you buy it for me."],["WE COOK UGLY RICE","We cook rice that always sticks a bit,\nYou say it's my heat, I say it's your pot,\nWe both are right, we both admit,\nThat perfect rice we have not,\nBut perfect evenings we have."],["THE DISHES AT MIDNIGHT","We do dishes at midnight again,\nBecause we procrastinated all day,\nPlates stacked like our maybe and when,\nSoaked in water turning grey,\nWaiting for us to face them."],["NIGHT BUS YOUR HEAD ON MY SHOULDER","The night bus smells of diesel and day-old sweat,\nWe take it because taxi is too dear,\nYour head finds my shoulder, heavy, yet,\nLight as permission to be near,\nIn public, unashamed."],["YOUR UMBRELLA IS TOO SMALL","Your umbrella is too small for two,\nWe walk like crabs, shoulder to shoulder,\nYou tilt it to my side, I tilt to you,\nWe both get wet, just colder,\nBut never let go to stay dry."],["HOW YOU STEAL MY HOODIE","You steal my hoodie every cold morning,\nNot asking, just wearing it like it's yours,\nYou say it smells better in your adorning,\nThan in my closet behind closed doors,\nAnd you are right, it does."],["THE WAY YOU CHARGE MY PHONE","My phone dies always at eleven percent,\nYou roll your eyes and plug it in,\nYou say I live too loud, too spent,\nAnd never let the low light win,\nYou charge my chaos with your calm."]];
 
-function unlock(){
- if(document.getElementById("pass").value===MY_PASSWORD){
-  document.getElementById("loginBox").style.display="none";
-  document.getElementById("dashBox").style.display="block";
-  loadData();
- } else {
-  document.getElementById("loginErr").style.display="block";
- }
-}
-
-function loadData(){
- let t=localStorage.getItem("gh_token"); if(t) document.getElementById("token").value=t;
- document.getElementById("token").addEventListener("change",()=>{localStorage.setItem("gh_token",document.getElementById("token").value)});
- updateClock(); setInterval(updateClock,1000);
- refreshList();
-}
-
-function updateClock(){
- let n=new Date(); let t=n.toLocaleTimeString('en-GB',{timeZone:'Africa/Kampala',hour12:false});
- let d=n.toLocaleDateString('en-GB',{timeZone:'Africa/Kampala',weekday:'long',day:'numeric',month:'long',year:'numeric'});
- document.getElementById("clock").innerText=t; document.getElementById("date").innerText=d;
-}
-
-function refreshList(){
- let poems=JSON.parse(localStorage.getItem("my_poems")||"[]");
- document.getElementById("count").innerText=10+poems.length;
- let h=""; poems.forEach(p=>{h+=`<div style="padding:8px 0;border-bottom:1px solid #222"><b style="color:#f5c518">${p[0]}</b><br>${p[1].substring(0,60)}...</div>`});
- document.getElementById("list").innerHTML=h||"<p style='color:#666'>No new poems yet. Using your 10 default poems.</p>";
-}
-
-function addPoem(){
- let title=document.getElementById("title").value.trim();
- let body=document.getElementById("body").value.trim();
- let token=document.getElementById("token").value.trim();
- let msg=document.getElementById("msg");
- 
- if(!title||!body){msg.innerHTML='<div class="red">Please fill title and poem!</div>';return;}
- if(!token||!token.startsWith("ghp_")){msg.innerHTML='<div class="red">Token bad - Paste valid ghp_ token from GitHub!</div>';return;}
- 
- localStorage.setItem("gh_token",token);
- let poems=JSON.parse(localStorage.getItem("my_poems")||"[]");
- poems.unshift([title,body]);
- localStorage.setItem("my_poems",JSON.stringify(poems));
- 
- msg.innerHTML='<div class="green">✅ Poem saved locally! Added to your website LIVE WATCH dashboard!<br><br>Now committing to GitHub...</div>';
- document.getElementById("title").value=""; document.getElementById("body").value="";
- refreshList();
- 
- // Optional GitHub auto-commit - will work if token is good
- setTimeout(()=>{msg.innerHTML+='<br><div class="green">Done! Go check https://paul-mcrae.github.io/paul-s-poetry/ - Refresh after 30 sec</div>';},1500);
-}
+function getAllPoems(){let extra=JSON.parse(localStorage.getItem("my_poems")||"[]");return [...extra,...defaultPoems];}
+function render(){let poems=getAllPoems();document.getElementById("pcount").innerText=poems.length;let h="";poems.forEach((p,i)=>{let long=p[1].length>140;h+=`<div class="card"><h3>${p[0]}</h3><p id="t${i}" class="${long?"short":""}">${p[1]}</p>${long?`<button class="read" onclick="let e=document.getElementById('t${i}');e.classList.toggle('short');this.innerText=e.classList.contains('short')?'Read full poem →':'Show less ↑'">Read full poem →</button>`:""}<div class="acts"><button onclick="let k='like_'+${i};let v=(+localStorage.getItem(k)||0)+1;localStorage.setItem(k,v);this.innerHTML='❤️ '+v">❤️ Like</button><button onclick="window.open('https://wa.me/?text='+encodeURIComponent('${p[0]} - PAULS POETRY https://paul-mcrae.github.io/paul-s-poetry/'))">↗️ Share</button><button>💬 Comment</button></div></div>`});document.getElementById("list").innerHTML=h;refreshAdmin();}
+function refreshAdmin(){let extra=JSON.parse(localStorage.getItem("my_poems")||"[]");let h="";if(extra.length===0)h="<p style='color:#666'>No new poems yet - 10 default poems showing</p>";else extra.forEach((p,i)=>{h+=`<div style="padding:8px 0;border-bottom:1px solid #222"><b style="color:#f5c518">${p[0]}</b><br>${p[1].substring(0,80)}... <a href="#" onclick="let a=JSON.parse(localStorage.getItem('my_poems'));a.splice(${i},1);localStorage.setItem('my_poems',JSON.stringify(a));render();return false" style="color:#f55">Delete</a></div>`});let el=document.getElementById("adminList");if(el)el.innerHTML=h;}
+function openAdmin(){document.getElementById("admin").style.display="block";document.getElementById("loginBox").style.display="block";document.getElementById("dashBox").style.display="none";}
+function closeAdmin(){document.getElementById("admin").style.display="none";}
+function unlock(){if(document.getElementById("pass").value===MY_PASSWORD){document.getElementById("loginBox").style.display="none";document.getElementById("dashBox").style.display="block";}else{document.getElementById("loginErr").style.display="block";}}
+function addPoem(){let t=document.getElementById("title").value.trim();let b=document.getElementById("body").value.trim();let m=document.getElementById("msg");if(!t||!b){m.innerHTML='<div style="color:#f55;border:1px solid #f55;padding:10px;border-radius:10px">Fill title and poem!</div>';return;}let arr=JSON.parse(localStorage.getItem("my_poems")||"[]");arr.unshift([t,b]);localStorage.setItem("my_poems",JSON.stringify(arr));m.innerHTML='<div style="color:#0f0;border:1px solid #0f0;padding:10px;border-radius:10px">✅ Added! Now showing on website with LIVE WATCH!</div>';document.getElementById("title").value="";document.getElementById("body").value="";render();setTimeout(()=>{m.innerHTML="";},3000);}
+function updateClock(){let n=new Date();let t=n.toLocaleTimeString('en-GB',{timeZone:'Africa/Kampala',hour12:false});let d=n.toLocaleDateString('en-GB',{timeZone:'Africa/Kampala',weekday:'long',year:'numeric',month:'long',day:'numeric'});document.getElementById("clock").innerText=t;let d2=document.getElementById("date");if(d2)d2.innerText=d;let ft=document.getElementById("ft");if(ft)ft.innerText=t+" EAT";let s=document.getElementById("sec");if(s)s.innerText=t.split(':')[2]+" sec";let c2=document.getElementById("clock2");if(c2)c2.innerText=t;let d22=document.getElementById("date2");if(d22)d22.innerText=d;}render();updateClock();setInterval(updateClock,1000);
 </script></body></html>
