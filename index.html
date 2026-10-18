@@ -3,10 +3,10 @@
 *{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#fff;font-family:system-ui}
 header{background:#111;padding:12px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10;border-bottom:1px solid #222}header b span{color:#f5c518}
 .btn{padding:10px 16px;border-radius:25px;text-decoration:none;font-weight:800;font-size:13px;display:inline-block}.btn-gold{background:#f5c518;color:#000}.btn-dark{background:#222;color:#fff;border:1px solid #555}
-.clockBox{background:#111;border:2px solid #f5c518;border-radius:16px;padding:14px;margin:12px;display:flex;justify-content:space-between}
-.clockBox .t{font-size:30px;color:#f5c518;font-weight:900}
+.clockBox{background:#111;border:2px solid #f5c518;border-radius:16px;padding:14px;margin:12px;display:flex;justify-content:space-between;align-items:center}.clockBox .t{font-size:30px;color:#f5c518;font-weight:900}
 .about{border:2px solid #f5c518;border-radius:20px;margin:12px;padding:20px;text-align:center;background:#121212}.about img{width:100px;height:100px;border-radius:50%;border:3px solid #f5c518;object-fit:cover}
-.card{background:#121212;border:1px solid #222;border-radius:14px;padding:14px;margin:12px}.card h3{color:#f5c518}
+.card{background:#121212;border:1px solid #222;border-radius:14px;padding:14px;margin:12px}.card h3{color:#f5c518;margin-bottom:6px}.card p{white-space:pre-line;line-height:1.7;color:#ddd;font-size:14px}.card p.short{max-height:84px;overflow:hidden;position:relative}.card p.short:after{content:"";position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,#121212)}.read{color:#f5c518;background:#1a1a1a;border:1px solid #333;padding:6px 12px;border-radius:20px;margin-top:8px;font-size:12px;font-weight:700}
+.acts{display:flex;gap:6px;margin-top:12px;border-top:1px solid #222;padding-top:10px;flex-wrap:wrap}.acts button{background:#222;border:1px solid #333;color:#fff;padding:7px 12px;border-radius:20px;font-size:12px}.acts button.liked{background:#f5c518;color:#000}
 #adminPanel{position:fixed;inset:0;background:#000;z-index:9999;display:none;padding:0;overflow:auto}
 .topBar{background:#111;border-bottom:1px solid #222;padding:12px;display:flex;justify-content:space-between;position:sticky;top:0}
 .statGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px}.stat{background:#111;border:1px solid #222;border-radius:12px;padding:12px}.stat b{font-size:22px;color:#f5c518;display:block}.stat span{font-size:11px;color:#888}
@@ -17,30 +17,18 @@ header{background:#111;padding:12px;display:flex;justify-content:space-between;a
 
 <header><b><span>PAUL'S</span> POETRY</b><div style="display:flex;gap:8px"><a class="btn btn-dark" href="#" onclick="showAdmin();return false">🔒 Admin</a><a class="btn btn-gold" href="https://wa.me/256709478798">WhatsApp</a></div></header>
 
-<div class="clockBox"><div><div class="t" id="clock">Loading...</div><div style="font-size:12px;color:#aaa" id="date">Kyotera, Uganda</div></div><div style="text-align:right"><div style="color:#0f0;font-size:11px">● LIVE</div><div style="font-size:11px;color:#888">📍 Kyotera</div><div id="sec" style="color:#f5c518;font-size:12px;font-weight:800">-- sec</div></div></div>
+<div class="clockBox"><div><div class="t" id="clock">Loading...</div><div style="font-size:12px;color:#aaa" id="date">Kyotera, Uganda</div></div><div style="text-align:right"><div style="color:#0f0;font-size:11px;font-weight:800">● LIVE</div><div style="font-size:11px;color:#888">📍 Kyotera</div><div id="sec" style="color:#f5c518;font-weight:800">-- sec</div></div></div>
 
 <div class="about"><img id="mainImg" src="paul.jpg" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200'"><h2 style="color:#f5c518;margin-top:8px">PAUL KAGANDA</h2><div style="background:#f5c518;color:#000;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:900;display:inline-block;margin:8px 0">20 YEARS • KYOTERA POET</div><p id="aboutText" style="color:#ccc;font-size:14px;text-align:left;margin-top:10px">I am Paul Kaganda, 20 years, Kyotera Uganda. I write about love in small things - coffee, shirts, keys, ugly rice. Real Ugandan love.</p></div>
 
 <h2 style="padding:16px">My Poems 🔥 <span id="pcount">10</span></h2>
+<div id="poemsArea"><p style="text-align:center;color:#666;padding:20px">Loading poems...</p></div>
 
-<!-- STATIC POEMS - ALWAYS SHOW EVEN IF JS CRASHES -->
-<div id="poemsArea">
-<div class="card"><h3>THE COFFEE WE SHARE</h3><p>I wake before the kettle sings your name, The kitchen cold without your sleepy light, I measure two spoons just the same...</p><div style="margin-top:10px;display:flex;gap:8px"><button style="background:#222;border:1px solid #333;color:#fff;padding:6px 10px;border-radius:15px;font-size:11px">❤️ Like</button><button style="background:#222;border:1px solid #333;color:#fff;padding:6px 10px;border-radius:15px;font-size:11px">↗️ Share</button><button style="background:#222;border:1px solid #333;color:#fff;padding:6px 10px;border-radius:15px;font-size:11px">💬 Comment</button></div></div>
-<div class="card"><h3>HOW YOU FOLD MY SHIRTS</h3><p>You fold my shirts like you mean it, Not perfect, but with care in each crease...</p></div>
-<div class="card"><h3>YOUR KEYS ON MY TABLE</h3><p>Your keys land loud on my table, A jingle that means you are home...</p></div>
-<div class="card"><h3>GROCERY LIST LOVE</h3><p>We write our grocery list on the back of bills...</p></div>
-<div class="card"><h3>WE COOK UGLY RICE</h3><p>We cook rice that always sticks a bit...</p></div>
-<div class="card"><h3>THE DISHES AT MIDNIGHT</h3><p>We do dishes at midnight again...</p></div>
-<div class="card"><h3>NIGHT BUS YOUR HEAD ON MY SHOULDER</h3><p>The night bus smells of diesel and day-old sweat...</p></div>
-<div class="card"><h3>YOUR UMBRELLA IS TOO SMALL</h3><p>Your umbrella is too small for two...</p></div>
-<div class="card"><h3>HOW YOU STEAL MY HOODIE</h3><p>You steal my hoodie every cold morning...</p></div>
-<div class="card"><h3>THE WAY YOU CHARGE MY PHONE</h3><p>My phone dies always at eleven percent...</p></div>
-</div>
+<footer style="text-align:center;padding:20px;color:#555;font-size:11px">© 2026 PAUL'S POETRY • <span id="ft"></span></footer>
 
 <div id="adminPanel">
 <div id="loginBox" style="max-width:380px;margin:80px auto;background:#111;border:2px solid #f5c518;border-radius:20px;padding:24px;text-align:center">
 <h2 style="color:#f5c518">🔒 ADMIN LOGIN</h2>
-<p style="color:#555;font-size:12px;margin:8px 0">Secure access only</p>
 <input type="password" id="pass" placeholder="Enter password" class="input">
 <button onclick="doLogin()" style="width:100%;padding:12px;background:#f5c518;border:none;border-radius:25px;font-weight:900;margin-top:12px">UNLOCK</button>
 <p id="err" style="color:#f55;display:none;margin-top:10px">Access denied</p>
@@ -48,7 +36,7 @@ header{background:#111;padding:12px;display:flex;justify-content:space-between;a
 </div>
 
 <div id="dashBox" style="display:none">
-<div class="topBar"><div><b>PAUL'S <span style="color:#f5c518">PRO</span> DASHBOARD</b><div id="clock2" style="font-size:12px;color:#f5c518">--:--:--</div></div><button onclick="hideAdmin()" style="background:#222;color:#fff;border:1px solid #444;padding:6px 12px;border-radius:20px">✕</button></div>
+<div class="topBar"><div><b>PAUL'S <span style="color:#f5c518">PRO</span></b><div id="clock2" style="font-size:12px;color:#f5c518">--:--:--</div></div><button onclick="hideAdmin()" style="background:#222;color:#fff;border:1px solid #444;padding:6px 12px;border-radius:20px">✕</button></div>
 
 <div class="statGrid">
 <div class="stat"><b id="sPoems">10</b><span>📝 Poems</span></div>
@@ -64,66 +52,139 @@ header{background:#111;padding:12px;display:flex;justify-content:space-between;a
 </div>
 
 <div id="tab-overview" class="tab on">
-<div class="card"><h3 style="color:#f5c518">🚀 Quick Add Poem</h3><input id="pTitle" placeholder="Title" class="input"><textarea id="pBody" placeholder="Full poem..." style="width:100%;height:120px;padding:12px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:10px;margin-top:8px"></textarea><button onclick="addPoem()" style="width:100%;padding:12px;background:#f5c518;color:#000;border:none;border-radius:25px;font-weight:900;margin-top:10px">+ PUBLISH LIVE 🌍</button><div id="msg"></div></div>
-<div class="card"><h3 style="color:#f5c518">📚 Live Poems</h3><div id="liveList"></div></div>
+<div class="card"><h3>✍️ Add Poem</h3><input id="pTitle" placeholder="Title" class="input"><textarea id="pBody" placeholder="Full poem body..." style="width:100%;height:130px;padding:12px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:10px;margin-top:8px"></textarea><button onclick="addPoem()" style="width:100%;padding:12px;background:#f5c518;color:#000;border:none;border-radius:25px;font-weight:900;margin-top:10px">+ PUBLISH LIVE 🌍</button><div id="msg"></div></div>
+<div class="card"><h3 style="color:#f5c518">📚 My Added Poems</h3><div id="liveList"></div></div>
 </div>
 
-<div id="tab-poems" class="tab">
-<div class="card"><h3 style="color:#f5c518">🔍 Search Poems</h3><input id="search" placeholder="Search title..." class="input" oninput="renderLive()"><div id="searchList" style="margin-top:10px"></div></div>
-</div>
+<div id="tab-poems" class="tab"><div class="card"><h3 style="color:#f5c518">🔍 Search & Delete</h3><input id="search" placeholder="Search..." class="input" oninput="renderManage()"><div id="searchList" style="margin-top:10px"></div></div></div>
 
 <div id="tab-settings" class="tab">
-<div class="card"><h3 style="color:#f5c518">🔑 Change Password (No Hints)</h3>
-<input type="password" id="oldPass" placeholder="Current password" class="input">
-<input type="password" id="newPass" placeholder="New password" class="input">
-<input type="password" id="confirmPass" placeholder="Confirm new password" class="input">
-<button onclick="changePass()" style="width:100%;padding:12px;background:#222;color:#f5c518;border:1px solid #f5c518;border-radius:25px;font-weight:800;margin-top:10px">Update Password</button><div id="passMsg"></div>
+<div class="card"><h3 style="color:#f5c518">🔑 Change Password</h3><input type="password" id="oldPass" placeholder="Current password" class="input"><input type="password" id="newPass" placeholder="New password" class="input"><input type="password" id="confirmPass" placeholder="Confirm new password" class="input"><button onclick="changePass()" style="width:100%;padding:12px;background:#222;color:#f5c518;border:1px solid #f5c518;border-radius:25px;font-weight:800;margin-top:10px">Update Password</button><div id="passMsg"></div></div>
+<div class="card"><h3 style="color:#f5c518">💾 Backup</h3><button onclick="exportData()" style="width:100%;padding:10px;background:#222;color:#fff;border:1px solid #333;border-radius:20px">📤 Export</button></div>
 </div>
-<div class="card"><h3 style="color:#f5c518">📝 About Text</h3><textarea id="aboutEdit" style="width:100%;height:100px;padding:12px;background:#1a1a1a;color:#fff;border:1px solid #333;border-radius:10px"></textarea><button onclick="saveAbout()" style="width:100%;padding:10px;background:#222;color:#fff;border:1px solid #333;border-radius:20px;margin-top:8px">Save About</button></div>
-<div class="card"><h3 style="color:#f5c518">💾 Backup</h3><button onclick="exportData()" style="width:100%;padding:10px;background:#222;color:#fff;border:1px solid #333;border-radius:20px">📤 Export Backup</button></div>
-</div>
-
 </div>
 </div>
 
 <script>
-// SAFE CLOCK
+var defaultPoems=[
+["THE COFFEE WE SHARE","I wake before the kettle sings your name,\nThe kitchen cold without your sleepy light,\nI measure two spoons just the same,\nOne strong for you, one soft and light,\nAnd wait to hear your morning feet.\n\nYou shuffle in, your hair a tangled crown,\nYour hoodie falling off one sleepy shoulder,\nYou steal my mug and never put it down,\nYou say I am cold but pull me closer,\nAnd suddenly the day is warmer than the coffee."],
+["HOW YOU FOLD MY SHIRTS","You fold my shirts like you mean it,\nNot perfect, but with care in each crease,\nSleeves tucked in, buttons hiding,\nAs if you are telling them peace,\nStay here, he will be back.\n\nI watch you from the doorway,\nYour tongue out in concentration,\nYou think I do not notice the way,\nYou smooth the collar with dedication,\nAs if you are ironing me into staying."],
+["YOUR KEYS ON MY TABLE","Your keys land loud on my table,\nA jingle that means you are home,\nNo knock, no text, no fable,\nJust metal music, you have roamed,\nBack to where you belong.\n\nYou kick off shoes like you own the floor,\nYou own the floor, you own the room,\nYou own the tiredness behind my door,\nAnd turn my evening from gloom,\nTo home, just by those keys."],
+["GROCERY LIST LOVE","We write our grocery list on the back of bills,\nYour handwriting big, mine cramped and small,\nMilk, bread, eggs, and your little frills,\nChocolate that you say is for us all,\nBut I know you buy it for me.\n\nYou add love at the bottom as a joke,\nI cross it out and write more love,\nThe shopkeeper thinks we are broke,\nCounting coins with hands in glove,\nBut rich in grocery list love."],
+["WE COOK UGLY RICE","We cook rice that always sticks a bit,\nYou say it is my heat, I say it is your pot,\nWe both are right, we both admit,\nThat perfect rice we have not,\nBut perfect evenings we have.\n\nWe eat it off one plate because we are lazy,\nOr romantic, we cannot decide,\nYour spoon fights mine, it is hazy,\nWho gets the last bite, with pride,\nWe cook ugly rice, beautiful us."],
+["THE DISHES AT MIDNIGHT","We do dishes at midnight again,\nBecause we procrastinated all day,\nPlates stacked like our maybe and when,\nSoaked in water turning grey,\nWaiting for us to face them.\n\nYou wash, I dry, we both complain,\nAbout whose turn it was yesterday,\nSoap bubbles pop like our small disdain,\nAnd disappear the same way,\nWe do dishes, and we stay."],
+["NIGHT BUS YOUR HEAD ON MY SHOULDER","The night bus smells of diesel and day-old sweat,\nWe take it because taxi is too dear,\nYour head finds my shoulder, heavy, yet,\nLight as permission to be near,\nIn public, unashamed.\n\nPeople stare, we do not care, we are tired,\nYour breath matches the bumpy road,\nI am your pillow, you are my desired,\nHeavy, heavy, heavy load,\nOf love on a night bus."],
+["YOUR UMBRELLA IS TOO SMALL","Your umbrella is too small for two,\nWe walk like crabs, shoulder to shoulder,\nYou tilt it to my side, I tilt to you,\nWe both get wet, just colder,\nBut never let go to stay dry.\n\nKyotera rain is not romantic in books,\nIt is muddy and cold and loud,\nBut under your small umbrella, it looks,\nLike we are the only crowd,\nToo in love to care about rain."],
+["HOW YOU STEAL MY HOODIE","You steal my hoodie every cold morning,\nNot asking, just wearing it like it is yours,\nYou say it smells better in your adorning,\nThan in my closet behind closed doors,\nAnd you are right, it does.\n\nIt hangs to your knees, sleeves too long,\nYou swim in my size, I swim in you,\nYou say it is warm, you say I am wrong,\nTo want it back, and I know it is true,\nKeep it, keep me warm in you."],
+["THE WAY YOU CHARGE MY PHONE","My phone dies always at eleven percent,\nYou roll your eyes and plug it in,\nYou say I live too loud, too spent,\nAnd never let the low light win,\nYou charge my chaos with your calm.\n\nYou charge my phone, you charge my day,\nWithout asking, without a speech,\nYou just do it, in your quiet way,\nThe way love is supposed to teach,\nBy doing, not saying."]
+];
+
+function getPass(){try{return localStorage.getItem('paul_admin_pass')||'Paul';}catch(e){return 'Paul';}}
+
 function updateClock(){
 try{
 var d=new Date();
 var h=d.getHours(); if(h<10) h='0'+h;
 var m=d.getMinutes(); if(m<10) m='0'+m;
 var s=d.getSeconds(); if(s<10) s='0'+s;
-var time=h+':'+m+':'+s;
-var clock=document.getElementById('clock');
-if(clock) clock.innerHTML=time;
-var sec=document.getElementById('sec');
-if(sec) sec.innerHTML=s+' sec';
-var clock2=document.getElementById('clock2');
-if(clock2) clock2.innerHTML=time;
-var ft=document.getElementById('ft');
-if(ft) ft.innerHTML=time;
-var date=document.getElementById('date');
-if(date) date.innerHTML=d.toDateString();
+var t=h+':'+m+':'+s;
+var el=document.getElementById('clock'); if(el) el.innerHTML=t;
+var el2=document.getElementById('sec'); if(el2) el2.innerHTML=s+' sec';
+var el3=document.getElementById('clock2'); if(el3) el3.innerHTML=t;
+var el4=document.getElementById('ft'); if(el4) el4.innerHTML=t;
+var el5=document.getElementById('date'); if(el5) el5.innerHTML=d.toDateString();
 }catch(e){}
 }
-setInterval(updateClock,1000);
-updateClock();
+setInterval(updateClock,1000); updateClock();
 
-// SAFE ADMIN
-function getPass(){try{return localStorage.getItem('paul_admin_pass')||'Paul';}catch(e){return 'Paul';}}
-function showAdmin(){
+function getAllPoems(){
 try{
+var extra=JSON.parse(localStorage.getItem('paul_poems')||'[]');
+return extra.concat(defaultPoems);
+}catch(e){return defaultPoems;}
+}
+
+function renderPoems(){
+try{
+var poems=getAllPoems();
+document.getElementById('pcount').innerHTML=poems.length;
+var html='';
+for(var i=0;i<poems.length;i++){
+var title=poems[i][0];
+var body=poems[i][1];
+var likes=localStorage.getItem('like_'+i)||0;
+var long=body.length>150;
+var extraLen=JSON.parse(localStorage.getItem('paul_poems')||'[]').length;
+var isNew=i<extraLen;
+var badge=isNew?' <span style="background:#f5c518;color:#000;padding:2px 6px;border-radius:10px;font-size:10px">NEW</span>':'';
+html+='<div class="card"><h3>'+title+badge+'</h3><p id="p'+i+'" class="'+(long?'short':'')+'">'+body+'</p>';
+if(long){html+='<button class="read" onclick="toggleP('+i+',this)">Read full poem →</button>';}
+html+='<div class="acts"><button id="like'+i+'" onclick="likePoem('+i+')">❤️ Like '+likes+'</button><button onclick="sharePoem('+i+')">↗️ Share</button><button onclick="commentPoem('+i+')">💬 Comment</button></div><div id="comments'+i+'" style="margin-top:8px;font-size:12px;color:#aaa"></div></div>';
+}
+document.getElementById('poemsArea').innerHTML=html;
+loadComments();
+}catch(e){document.getElementById('poemsArea').innerHTML='<p style="color:#f55;text-align:center">Error loading poems: '+e+'</p>';}
+}
+
+function toggleP(i,btn){
+var e=document.getElementById('p'+i);
+e.classList.toggle('short');
+btn.innerHTML=e.classList.contains('short')?'Read full poem →':'Show less ↑';
+}
+function likePoem(i){
+var key='like_'+i;
+var v=parseInt(localStorage.getItem(key)||'0')+1;
+localStorage.setItem(key,v);
+var b=document.getElementById('like'+i);
+if(b){b.innerHTML='❤️ Liked '+v; b.classList.add('liked');}
+try{updateStats();}catch(e){}
+}
+function sharePoem(i){
+var poems=getAllPoems();
+var title=poems[i][0];
+var url='https://paul-mcrae.github.io/paul-s-poetry/';
+var text=title+' - Read on PAULS POETRY '+url;
+window.open('https://wa.me/?text='+encodeURIComponent(text),'_blank');
+}
+function commentPoem(i){
+var name=prompt('Your name:');
+if(!name) return;
+var txt=prompt('Your comment:');
+if(!txt) return;
+var key='comments_'+i;
+var arr=JSON.parse(localStorage.getItem(key)||'[]');
+arr.push(name+': '+txt);
+localStorage.setItem(key,JSON.stringify(arr));
+loadComments();
+try{updateStats();}catch(e){}
+}
+function loadComments(){
+try{
+var poems=getAllPoems();
+for(var j=0;j<poems.length;j++){
+var key='comments_'+j;
+var arr=JSON.parse(localStorage.getItem(key)||'[]');
+var el=document.getElementById('comments'+j);
+if(el && arr.length>0){
+var h='<div style="margin-top:6px;border-top:1px solid #222;padding-top:6px">';
+for(var k=0;k<arr.length;k++){h+='<div>💬 '+arr[k]+'</div>';}
+h+='</div>';
+el.innerHTML=h;
+}
+}
+}catch(e){}
+}
+
+// ADMIN
+function showAdmin(){
 document.getElementById('adminPanel').style.display='block';
 document.getElementById('loginBox').style.display='block';
 document.getElementById('dashBox').style.display='none';
 document.getElementById('pass').value='';
 document.getElementById('err').style.display='none';
-}catch(e){alert('Admin error: '+e);}
 }
 function hideAdmin(){document.getElementById('adminPanel').style.display='none';}
 function doLogin(){
-try{
 var p=document.getElementById('pass').value;
 if(p===getPass()){
 document.getElementById('loginBox').style.display='none';
@@ -132,85 +193,84 @@ initDash();
 }else{
 document.getElementById('err').style.display='block';
 }
-}catch(e){alert(e);}
 }
 function openTab(id,btn){
 var tabs=document.querySelectorAll('.tab');
-for(var i=0;i<tabs.length;i++){tabs[i].classList.remove('on');}
+for(var i=0;i<tabs.length;i++) tabs[i].classList.remove('on');
 document.getElementById('tab-'+id).classList.add('on');
 var btns=document.querySelectorAll('.tabs button');
-for(var j=0;j<btns.length;j++){btns[j].classList.remove('on');}
+for(var j=0;j<btns.length;j++) btns[j].classList.remove('on');
 btn.classList.add('on');
+if(id==='poems') renderManage();
 }
 function initDash(){
 try{
-var poems=JSON.parse(localStorage.getItem('paul_poems')||'[]');
-document.getElementById('sPoems').innerHTML=10+poems.length;
+var extra=JSON.parse(localStorage.getItem('paul_poems')||'[]');
+document.getElementById('sPoems').innerHTML=10+extra.length;
 var views=parseInt(localStorage.getItem('views')||'0')+1;
 localStorage.setItem('views',views);
 document.getElementById('sViews').innerHTML=views;
-renderLive();
-var about=localStorage.getItem('paul_about');
-if(about){document.getElementById('aboutText').innerHTML=about;document.getElementById('aboutEdit').value=about;}
+updateStats();
+renderManage();
 }catch(e){}
 }
-function renderLive(){
+function updateStats(){
 try{
-var poems=JSON.parse(localStorage.getItem('paul_poems')||'[]');
-var q=document.getElementById('search').value||'';
-var html='';
-for(var i=0;i<poems.length;i++){
-if(q && poems[i][0].toLowerCase().indexOf(q.toLowerCase())==-1) continue;
-html+='<div style="padding:8px 0;border-bottom:1px solid #222;display:flex;justify-content:space-between"><span style="color:#f5c518">'+poems[i][0]+'</span><a href="#" onclick="delPoem('+i+');return false" style="color:#f55;font-size:12px">Delete</a></div>';
+var poems=getAllPoems();
+var likes=0; for(var i=0;i<poems.length;i++) likes+=parseInt(localStorage.getItem('like_'+i)||0);
+document.getElementById('sLikes').innerHTML=likes;
+var comm=0; for(var j=0;j<poems.length;j++) comm+=JSON.parse(localStorage.getItem('comments_'+j)||'[]').length;
+document.getElementById('sComments').innerHTML=comm;
+}catch(e){}
 }
-if(document.getElementById('liveList')) document.getElementById('liveList').innerHTML=html||'No new poems';
-if(document.getElementById('searchList')) document.getElementById('searchList').innerHTML=html;
+function renderManage(){
+try{
+var extra=JSON.parse(localStorage.getItem('paul_poems')||'[]');
+var q=(document.getElementById('search')?document.getElementById('search').value:'')||'';
+var html='';
+for(var i=0;i<extra.length;i++){
+if(q && extra[i][0].toLowerCase().indexOf(q.toLowerCase())==-1) continue;
+html+='<div style="padding:8px 0;border-bottom:1px solid #222;display:flex;justify-content:space-between"><span style="color:#f5c518">'+extra[i][0]+'</span><a href="#" onclick="delPoem('+i+');return false" style="color:#f55">Delete</a></div>';
+}
+document.getElementById('liveList').innerHTML=html||'No new poems yet';
+document.getElementById('searchList').innerHTML=html||'No match';
 }catch(e){}
 }
 function addPoem(){
-try{
-var t=document.getElementById('pTitle').value;
-var b=document.getElementById('pBody').value;
+var t=document.getElementById('pTitle').value.trim();
+var b=document.getElementById('pBody').value.trim();
 if(!t||!b){alert('Fill both');return;}
 var arr=JSON.parse(localStorage.getItem('paul_poems')||'[]');
 arr.unshift([t,b]);
 localStorage.setItem('paul_poems',JSON.stringify(arr));
-document.getElementById('msg').innerHTML='<p style="color:#0f0;text-align:center;margin-top:8px">✅ Added LIVE!</p>';
+document.getElementById('msg').innerHTML='<p style="color:#0f0;text-align:center;margin-top:8px">✅ Published LIVE!</p>';
 document.getElementById('pTitle').value='';document.getElementById('pBody').value='';
-renderLive();
-}catch(e){alert(e);}
+renderPoems(); renderManage(); updateStats();
 }
 function delPoem(i){
 var arr=JSON.parse(localStorage.getItem('paul_poems')||'[]');
 arr.splice(i,1);
 localStorage.setItem('paul_poems',JSON.stringify(arr));
-renderLive();
+renderPoems(); renderManage(); updateStats();
 }
 function changePass(){
-try{
 var oldP=document.getElementById('oldPass').value;
 var newP=document.getElementById('newPass').value;
 var conf=document.getElementById('confirmPass').value;
 var msg=document.getElementById('passMsg');
-if(oldP!==getPass()){msg.innerHTML='<p style="color:#f55;text-align:center;margin-top:8px">Current wrong!</p>';return;}
+if(oldP!==getPass()){msg.innerHTML='<p style="color:#f55;text-align:center">Current wrong!</p>';return;}
 if(newP.length<2){msg.innerHTML='<p style="color:#f55;text-align:center">Too short</p>';return;}
 if(newP!==conf){msg.innerHTML='<p style="color:#f55;text-align:center">Not match</p>';return;}
 localStorage.setItem('paul_admin_pass',newP);
-msg.innerHTML='<p style="color:#0f0;text-align:center;margin-top:8px">✅ Password changed!</p>';
+msg.innerHTML='<p style="color:#0f0;text-align:center">✅ Changed!</p>';
 document.getElementById('oldPass').value='';document.getElementById('newPass').value='';document.getElementById('confirmPass').value='';
-}catch(e){alert(e);}
-}
-function saveAbout(){
-var t=document.getElementById('aboutEdit').value;
-localStorage.setItem('paul_about',t);
-document.getElementById('aboutText').innerHTML=t;
-alert('Saved');
 }
 function exportData(){
-var data={poems:localStorage.getItem('paul_poems'),about:localStorage.getItem('paul_about')};
+var data={poems:localStorage.getItem('paul_poems')};
 var blob=new Blob([JSON.stringify(data)],{type:'application/json'});
 var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='backup.json';a.click();
 }
-// init views
+
+renderPoems();
 try{if(!localStorage.getItem('views')) localStorage.setItem('views','1');}catch(e){}
 </script></body></html>
